@@ -4,7 +4,7 @@
 
 Orchestra Manager is an app designed to make musicians lives easier.  <br />
 
-To run this project, follow the instructions below.  <br />\
+To run this project, follow the instructions below.  <br />
 
 This app uses the following NPM libraries: react-native, mongoose, express, cors, dotenv, axios
 
