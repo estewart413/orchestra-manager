@@ -6,6 +6,8 @@ require('dotenv').config;
 const app = express();
 const port = process.env.PORT || 5000;
 
+//Require User Schema File
+require('./models/users.model');
 app.use(cors());
 app.use(express.json());
 
