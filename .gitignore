@@ -1,8 +1,10 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
+orchestra-manager/*
 orchestra-manager/node_modules
 orchestra-manager-backend/node_modules
+orchestra-manager-frontend/node_modules
 /.pnp
 .pnp.js
 
@@ -18,6 +20,7 @@ orchestra-manager-backend/node_modules
 .env.development.local
 .env.test.local
 .env.production.local
+cmps285-spring2020-group1.code-workspace
 
 npm-debug.log*
 yarn-debug.log*
