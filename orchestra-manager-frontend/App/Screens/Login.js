@@ -58,7 +58,7 @@ export default class Login extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#8fbc8f88",
+    backgroundColor: "white",
     alignItems: "center",
     justifyContent: "center",
     padding: 20
@@ -70,11 +70,11 @@ const styles = StyleSheet.create({
 
   title: {
     fontSize: 30,
-    color: "white"
+    color: "#2f4f4f"
   },
 
   buttonPosition: {
-    backgroundColor: "#8fbc8f",
+    backgroundColor: "#008080",
     height: 35,
     width: 200,
     justifyContent: "center",
@@ -84,7 +84,8 @@ const styles = StyleSheet.create({
 
   buttonText: {
     color: "white",
-    textAlign: "center"
+    textAlign: "center",
+    fontSize: 18
   },
 
   input: {
@@ -93,6 +94,8 @@ const styles = StyleSheet.create({
     padding: 10,
     marginLeft: 25,
     backgroundColor: "white",
+    borderBottomColor: "#696969",
+    borderBottomWidth: 1,
     justifyContent: "center",
     alignItems: "center"
   }

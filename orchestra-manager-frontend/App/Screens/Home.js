@@ -29,7 +29,7 @@ export default class Home extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#8fbc8f88",
+    backgroundColor: "white",
     alignItems: "center",
     justifyContent: "center",
     padding: 20
@@ -45,17 +45,17 @@ const styles = StyleSheet.create({
   },
 
   buttonPosition: {
-    backgroundColor: "#8fbc8f",
+    backgroundColor: "#008080",
     height: 35,
     width: 200,
     justifyContent: "center",
     alignItems: "center",
-    marginLeft: 25
   },
 
   buttonText: {
     color: "white",
-    textAlign: "center"
+    textAlign: "center",
+    fontSize: 18
   },
 
   input: {
