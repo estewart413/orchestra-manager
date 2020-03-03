@@ -6,7 +6,8 @@ import {
   SafeAreaView,
   TouchableOpacity,
   Alert,
-  TextInput
+  TextInput,
+  KeyboardAvoidingView
 } from "react-native";
 
 function Separator() {
@@ -16,78 +17,81 @@ function Separator() {
 export default class Registration extends React.Component {
   render() {
     return (
-      <SafeAreaView style={styles.container}>
-        <View>
-        <Separator />
-        <Separator />
-          <Text style={styles.title}>Registration</Text>
-          <Separator />
-          <Separator />
-
-          <TextInput
-            placeholder="First Name"
-            placeholderTextColor="grey"
-            style={styles.input}
-          />
-          <Separator />
-
-          <TextInput
-            placeholder="Last Name"
-            placeholderTextColor="grey"
-            style={styles.input}
-          />
-          <Separator />
-
-          <TextInput
-            placeholder="Email Address"
-            placeholderTextColor="grey"
-            style={styles.input}
-          />
-          <Separator />
-
-          <TextInput
-            placeholder="Confirm Email Address"
-            placeholderTextColor="grey"
-            style={styles.input}
-          />
-          <Separator />
-
-          <TextInput
-            placeholder="Password"
-            placeholderTextColor="grey"
-            secureTextEntry={true}
-            style={styles.input}
-          />
-          <Separator />
-
-          <TextInput
-            placeholder="Confirm Password"
-            placeholderTextColor="grey"
-            secureTextEntry={true}
-            style={styles.input}
-          />
-          <Separator />
-
+      <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
+        <SafeAreaView style={styles.container}>
           <View>
-            <TouchableOpacity
-              style={styles.buttonPosition}
-              onPress={() => Alert.alert("Registration Successful!")}>
-              <Text style={styles.buttonText}>Create Account</Text>
-            </TouchableOpacity>
-          </View>
-            <Separator/>
+            <Separator />
+            <Separator />
+            <Text style={styles.title}>Registration</Text>
+            <Separator />
+            <Separator />
 
-          <View>
-           <Text style={styles.regText}>Already have an account?</Text>
-            <TouchableOpacity
-              style={styles.linkButton}
-              onPress={() => this.props.navigation.navigate("Login")}>
-              <Text style = {styles.linkButton}>Log In</Text>
-            </TouchableOpacity>
-          </View>
+            <TextInput
+              placeholder="First Name"
+              placeholderTextColor="grey"
+              style={styles.input}
+            />
+            <Separator />
 
-        </View>
-      </SafeAreaView>
+            <TextInput
+              placeholder="Last Name"
+              placeholderTextColor="grey"
+              style={styles.input}
+            />
+            <Separator />
+
+            <TextInput
+              placeholder="Email Address"
+              placeholderTextColor="grey"
+              style={styles.input}
+            />
+            <Separator />
+
+            <TextInput
+              placeholder="Confirm Email Address"
+              placeholderTextColor="grey"
+              style={styles.input}
+            />
+            <Separator />
+
+            <TextInput
+              placeholder="Password"
+              placeholderTextColor="grey"
+              secureTextEntry={true}
+              style={styles.input}
+            />
+            <Separator />
+
+            <TextInput
+              placeholder="Confirm Password"
+              placeholderTextColor="grey"
+              secureTextEntry={true}
+              style={styles.input}
+            />
+            <Separator />
+
+            <View>
+              <TouchableOpacity
+                style={styles.buttonPosition}
+                onPress={() => Alert.alert("Registration Successful!")}
+              >
+                <Text style={styles.buttonText}>Create Account</Text>
+              </TouchableOpacity>
+            </View>
+            <Separator />
+
+            <View>
+              <Text style={styles.regText}>Already have an account?</Text>
+              <TouchableOpacity
+                style={styles.linkButton}
+                onPress={() => this.props.navigation.navigate("Login")}
+              >
+                <Text style={styles.linkButton}>Log In</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </SafeAreaView>
+      </KeyboardAvoidingView>
     );
   }
 }
@@ -97,9 +101,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "white",
     alignItems: "center",
-    alignContent: 'center',
+    alignContent: "center",
     justifyContent: "center",
-    padding: 20,
+    padding: 20
   },
 
   separator: {
@@ -118,7 +122,7 @@ const styles = StyleSheet.create({
     height: 35,
     width: 200,
     justifyContent: "flex-end",
-    alignItems: "center",
+    alignItems: "center"
   },
 
   buttonText: {
@@ -139,15 +143,13 @@ const styles = StyleSheet.create({
   },
 
   linkButton: {
-    color: 'black',
-    textDecorationLine: 'underline',
-    alignItems: 'center',
-
+    color: "black",
+    textDecorationLine: "underline",
+    alignItems: "center"
   },
 
   regText: {
-      alignItems: 'center',
-      marginLeft: 20
+    alignItems: "center",
+    marginLeft: 20
   }
-
 });

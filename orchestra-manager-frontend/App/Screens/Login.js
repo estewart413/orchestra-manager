@@ -6,7 +6,8 @@ import {
   SafeAreaView,
   TouchableOpacity,
   Alert,
-  TextInput
+  TextInput,
+  KeyboardAvoidingView
 } from "react-native";
 
 function Separator() {
@@ -16,6 +17,7 @@ function Separator() {
 export default class Login extends React.Component {
   render() {
     return (
+      <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
       <SafeAreaView style={styles.container}>
         <View>
           <Text style={styles.title}>Orchestra Manager</Text>
@@ -25,7 +27,7 @@ export default class Login extends React.Component {
           <Separator />
 
           <TextInput
-            placeholder="Username"
+            placeholder="Email Address"
             placeholderTextColor="grey"
             style={styles.input}
           />
@@ -65,6 +67,7 @@ export default class Login extends React.Component {
 
         </View>
       </SafeAreaView>
+      </KeyboardAvoidingView>
     );
   }
 }
