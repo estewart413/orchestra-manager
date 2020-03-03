@@ -33,7 +33,7 @@ export default class Login extends React.Component {
 
           <TextInput
             placeholder="Password"
-            placeholderTextColor="grey"
+            secureTextEntry={true}
             style={styles.input}
           />
 

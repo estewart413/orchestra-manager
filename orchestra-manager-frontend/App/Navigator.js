@@ -27,7 +27,7 @@ const work = createStackNavigator({
       
     },
   },
-  Ensamble: {
+  Ensemble: {
     screen: CreateEnsScreen,
     navigationOptions: {
       title: 'Presets',

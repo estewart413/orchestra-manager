@@ -24,9 +24,9 @@ const HomeScreen = ({navigation }) =>
       <Separator />
 
       <Button
-        onPress={() => navigation.navigate('Ensamble')}
+        onPress={() => navigation.navigate('Ensemble')}
         style={styles.buttonStyle}
-        title="Create Ensamble"
+        title="Create Ensemble"
         color= {PRIME_COLOR}
       />
 
