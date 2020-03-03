@@ -34,7 +34,6 @@ export default class Registration extends React.Component {
           <TextInput
             placeholder="Last Name"
             placeholderTextColor="grey"
-            secureTextEntry={true}
             style={styles.input}
           />
           <Separator />
@@ -42,7 +41,6 @@ export default class Registration extends React.Component {
           <TextInput
             placeholder="Email Address"
             placeholderTextColor="grey"
-            secureTextEntry={true}
             style={styles.input}
           />
           <Separator />
@@ -50,7 +48,6 @@ export default class Registration extends React.Component {
           <TextInput
             placeholder="Confirm Email Address"
             placeholderTextColor="grey"
-            secureTextEntry={true}
             style={styles.input}
           />
           <Separator />
