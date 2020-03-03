@@ -18,9 +18,9 @@ export default class Registration extends React.Component {
     return (
       <SafeAreaView style={styles.container}>
         <View>
+        <Separator />
+        <Separator />
           <Text style={styles.title}>Registration</Text>
-          <Separator />
-          <Separator />
           <Separator />
           <Separator />
 
@@ -41,6 +41,14 @@ export default class Registration extends React.Component {
 
           <TextInput
             placeholder="Email Address"
+            placeholderTextColor="grey"
+            secureTextEntry={true}
+            style={styles.input}
+          />
+          <Separator />
+
+          <TextInput
+            placeholder="Confirm Email Address"
             placeholderTextColor="grey"
             secureTextEntry={true}
             style={styles.input}
@@ -71,11 +79,13 @@ export default class Registration extends React.Component {
             </TouchableOpacity>
           </View>
             <Separator/>
+
           <View>
+           <Text style={styles.regText}>Already have an account?</Text>
             <TouchableOpacity
               style={styles.linkButton}
               onPress={() => this.props.navigation.navigate("Login")}>
-              <Text style={styles.linkButton}>Log In Screen</Text>
+              <Text style = {styles.linkButton}>Log In</Text>
             </TouchableOpacity>
           </View>
 
@@ -92,7 +102,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     alignContent: 'center',
     justifyContent: "center",
-    padding: 20
+    padding: 20,
   },
 
   separator: {
@@ -103,7 +113,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     color: "#2f4f4f",
     alignItems: "center",
-    marginLeft: 15
+    marginLeft: 18
   },
 
   buttonPosition: {
@@ -136,5 +146,11 @@ const styles = StyleSheet.create({
     textDecorationLine: 'underline',
     alignItems: 'center',
 
+  },
+
+  regText: {
+      alignItems: 'center',
+      marginLeft: 20
   }
+
 });
