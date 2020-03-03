@@ -13,19 +13,40 @@ function Separator() {
   return <View style={styles.separator} />;
 }
 
-export default class Login extends React.Component {
+export default class Registration extends React.Component {
   render() {
     return (
       <SafeAreaView style={styles.container}>
         <View>
-          <Text style={styles.title}>Orchestra Manager</Text>
-
-          <Separator />
+        <Separator />
+        <Separator />
+          <Text style={styles.title}>Registration</Text>
           <Separator />
           <Separator />
 
           <TextInput
-            placeholder="Username"
+            placeholder="First Name"
+            placeholderTextColor="grey"
+            style={styles.input}
+          />
+          <Separator />
+
+          <TextInput
+            placeholder="Last Name"
+            placeholderTextColor="grey"
+            style={styles.input}
+          />
+          <Separator />
+
+          <TextInput
+            placeholder="Email Address"
+            placeholderTextColor="grey"
+            style={styles.input}
+          />
+          <Separator />
+
+          <TextInput
+            placeholder="Confirm Email Address"
             placeholderTextColor="grey"
             style={styles.input}
           />
@@ -33,33 +54,35 @@ export default class Login extends React.Component {
 
           <TextInput
             placeholder="Password"
-            placeholderTextColor='grey'
+            placeholderTextColor="grey"
             secureTextEntry={true}
             style={styles.input}
           />
+          <Separator />
 
-          <View>
-            <Separator />
-          </View>
+          <TextInput
+            placeholder="Confirm Password"
+            placeholderTextColor="grey"
+            secureTextEntry={true}
+            style={styles.input}
+          />
+          <Separator />
 
           <View>
             <TouchableOpacity
               style={styles.buttonPosition}
-              onPress={() => this.props.navigation.navigate("Home")}
-            >
-              <Text style={styles.buttonText}>Log In</Text>
+              onPress={() => Alert.alert("Registration Successful!")}>
+              <Text style={styles.buttonText}>Create Account</Text>
             </TouchableOpacity>
           </View>
+            <Separator/>
 
           <View>
-            <Separator />
-          </View>
-
-          <View>
+           <Text style={styles.regText}>Already have an account?</Text>
             <TouchableOpacity
               style={styles.linkButton}
-              onPress={() => this.props.navigation.navigate("Registration")}>
-              <Text style={styles.linkButton}>Create an Account</Text>
+              onPress={() => this.props.navigation.navigate("Login")}>
+              <Text style = {styles.linkButton}>Log In</Text>
             </TouchableOpacity>
           </View>
 
@@ -74,8 +97,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "white",
     alignItems: "center",
+    alignContent: 'center',
     justifyContent: "center",
-    padding: 20
+    padding: 20,
   },
 
   separator: {
@@ -84,21 +108,23 @@ const styles = StyleSheet.create({
 
   title: {
     fontSize: 30,
-    color: "#2f4f4f"
+    color: "#2f4f4f",
+    alignItems: "center",
+    marginLeft: 18
   },
 
   buttonPosition: {
     backgroundColor: "#008080",
     height: 35,
     width: 200,
-    justifyContent: "center",
+    justifyContent: "flex-end",
     alignItems: "center",
-    marginLeft: 25
   },
 
   buttonText: {
     color: "white",
     textAlign: "center",
+    marginBottom: 5,
     fontSize: 18
   },
 
@@ -106,11 +132,9 @@ const styles = StyleSheet.create({
     height: 35,
     width: 200,
     padding: 10,
-    marginLeft: 25,
     backgroundColor: "white",
     borderBottomColor: "#696969",
     borderBottomWidth: 1,
-    justifyContent: "center",
     alignItems: "center"
   },
 
@@ -119,5 +143,11 @@ const styles = StyleSheet.create({
     textDecorationLine: 'underline',
     alignItems: 'center',
 
+  },
+
+  regText: {
+      alignItems: 'center',
+      marginLeft: 20
   }
+
 });
