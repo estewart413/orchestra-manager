@@ -1,15 +1,14 @@
 import React from "react";
 import { Platform, StatusBar } from "react-native";
 import { createStackNavigator } from "react-navigation-stack";
-import {
-  createAppContainer,
-  createNavigationContainer
-} from "react-navigation";
+import { createAppContainer, createNavigationContainer } from "react-navigation";
 
 import Login from "./Screens/Login";
-import Home from "./Screens/Home";
+import HomeScreen from "./Screens/HomeScreen";
 import ScreenThree from "./Screens/ScreenThree";
 import ScreenFour from "./Screens/ScreenFour";
+import CreateEnsScreen from "./Screens/CreateEnsScreen";
+import InstrumentsList from "./Screens/InstrumentsList";
 
 const work = createStackNavigator({
   //creates start-up screen to "Login"
@@ -20,23 +19,23 @@ const work = createStackNavigator({
     }
   },
   Home: {
-    screen: Home,
+    screen: HomeScreen,
     navigationOptions: {
-      headerShown: false
-    }
+      title: 'Home',
+      headerBackTitleVisible: true,
+      headerTitleAlign: 'center'
+      
+    },
   },
-
-  ScreenThree: {
-    screen: ScreenThree,
+  Ensamble: {
+    screen: CreateEnsScreen,
     navigationOptions: {
-      headerShown: false
-    }
+      title: 'Presets',
+      headerBackTitleVisible: true,
+      headerTitleAlign: 'center'
   },
-
-  ScreenFour: {
-    screen: ScreenFour,
-    navigationOptions: {
-      headerShown: false
+  Instruments: {
+    screen: InstrumentsList
     }
   }
 });
