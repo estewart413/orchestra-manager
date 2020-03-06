@@ -35,9 +35,9 @@ const work = createStackNavigator({
       headerBackTitleVisible: true,
       headerTitleAlign: "center"
     },
-    Instruments: {
-      screen: InstrumentsList
-    }
+  },
+  Instruments: {
+    screen: InstrumentsList
   },
   Registration: {
     screen: Registration,

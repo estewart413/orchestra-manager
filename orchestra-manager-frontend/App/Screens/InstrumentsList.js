@@ -1,8 +1,7 @@
 import React from 'react';
 import { Text, View, StyleSheet, FlatList } from 'react-native';
 
-const InstrumentsList = () => {
-    
+const InstrumentsList = () => { 
     const instruments = [
         { name: 'Instrument #1', group: 'violin 1'},
         { name: 'Instrument #2', group: 'violin 1'},
@@ -29,7 +28,7 @@ const InstrumentsList = () => {
 const styles = StyleSheet.create ({
     textStyle: {
         marginVertical : 15,
-        fontSize: 18
+        fontSize: 20
     }
 
 });

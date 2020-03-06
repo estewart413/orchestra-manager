@@ -7,20 +7,18 @@ const CreateEnsScreen = () =>
     return (
         <View styles={styles.container}>
             
-            
-            
-            <PresetView 
+            <PresetView style = {styles.text}
                 title="Symphony Orchestra"
                 imageSource={require('../../assets/symphony.jpg')}
-                />
-            <PresetView 
-                title="Jazz Band" 
+            />
+            <PresetView style = {styles.text}
+                title="Jazz Band"
                 imageSource={require('../../assets/jazz.jpg')}
-                />
+            />
             <PresetView 
                 title="Marching Band" 
                 imageSource={require('../../assets/mband.jpg')}
-                />
+            />
         </View>
     );
 };
@@ -29,8 +27,13 @@ const styles = StyleSheet.create({
     container: {
         padding: 20,
         backgroundColor: "white",
-        flex: 6
-      }
+        flex: 6,
+        alignContent: 'center'
+    },
+    text: {
+        fontSize: 45,
+        marginLeft: 8
+    }
 });
 
 export default CreateEnsScreen;

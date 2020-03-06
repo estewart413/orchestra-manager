@@ -5,34 +5,27 @@ function Separator() {
     return <View style={styles.separatorStyle} />;
   }
 
-const PresetView = props => 
-{
+const PresetView = props => {
     return (
-        <View styles={styles.container}>
+        <View>
             <Separator/>
-            <Text styles={styles.textStyle}>{props.title}</Text>
+            <Text styles={styles.text}>{props.title}</Text>
             <Image 
                 styles={styles.imagePosition}
-                source={props.imageSource} 
+                source={props.imageSource}
             />
         </View>
     );
 };
 
 const styles = StyleSheet.create({
-    container: {
-        
-      },
-      imagePosition: {
-        alignItems: 'center',
-        borderRadius: 15
-      },
-      textStyle: {
-          textAlign: 'center'
-      },
-      separatorStyle: {
-        marginVertical: 10
-      }
+    text: {
+        fontSize: 15,
+        marginLeft: 8
+    },
+    separatorStyle: {
+        marginTop: 20
+    }
 });
 
 export default PresetView;

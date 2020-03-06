@@ -34,7 +34,7 @@ const HomeScreen = ({navigation }) =>
       
       <Button 
         style={styles.buttonStyle}
-        title="Go to List of Instruments"
+        title="Upload Parts"
         color= {PRIME_COLOR}
       /> 
 
