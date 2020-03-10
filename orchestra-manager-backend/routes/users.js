@@ -19,7 +19,7 @@ router.route('/add').post((req, res) => {
     const lName = req.body.lName;
     const password = req.body.password;
     const email = req.body.email;
-    const userName = req.body.username;
+    const userName = req.body.userName;
 
     const newUser = new User({
         userType,
