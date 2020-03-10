@@ -2,8 +2,8 @@
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 15868,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null
+  "packagerPid": 6564,
+  "expoServerNgrokUrl": "https://ht-hdd.anonymous.orchestra-manager-frontend.exp.direct",
+  "packagerNgrokUrl": "https://packager.ht-hdd.anonymous.orchestra-manager-frontend.exp.direct",
+  "ngrokPid": 684
 }
