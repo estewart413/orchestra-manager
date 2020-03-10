@@ -11,6 +11,9 @@ import HomeScreen from "./Screens/HomeScreen";
 import CreateEnsScreen from "./Screens/CreateEnsScreen";
 import InstrumentsList from "./Screens/InstrumentsList";
 import Registration from "./Screens/Registration";
+import so from "./Screens/presetScreens/so";
+import jb from "./Screens/presetScreens/jb";
+import mb from "./Screens/presetScreens/mb";
 
 const work = createStackNavigator({
   //creates start-up screen to "Login"
@@ -45,6 +48,30 @@ const work = createStackNavigator({
       title: "Registration",
       headerTitleAlign: "center",
       headerShown: false
+    },
+  },
+  so: {
+    screen: so,
+    navigationOptions: {
+      title: "Symphony Orchestra",
+      headerBackTitleVisible: true,
+      headerTitleAlign: "center"
+    },
+  },
+  jb: {
+    screen: jb,
+    navigationOptions: {
+      title: "Jazz Band",
+      headerBackTitleVisible: true,
+      headerTitleAlign: "center"
+    },
+  },
+  mb: {
+    screen: mb,
+    navigationOptions: {
+      title: "Marching Band",
+      headerBackTitleVisible: true,
+      headerTitleAlign: "center"
     }
   }
 });

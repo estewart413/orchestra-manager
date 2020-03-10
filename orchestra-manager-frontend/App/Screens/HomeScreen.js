@@ -14,8 +14,10 @@ function Separator() {
 }
 const PRIME_COLOR = "#008082";
 //---------------------------------------------------------
-const HomeScreen = ({navigation }) => 
+const HomeScreen = ({ navigation }) => 
 {
+  
+  
   return (
     <View style={styles.container}>
 
@@ -37,21 +39,11 @@ const HomeScreen = ({navigation }) =>
         title="Upload Parts"
         color= {PRIME_COLOR}
       /> 
-
-      <Separator/>
-
-      <Button 
-        onPress={() => navigation.navigate('Instruments')}
-        style={styles.buttonStyle}
-        title="Go to List of Instruments"
-        color= {PRIME_COLOR}
-      /> 
-
-
-
+      
     </View>
   );
 };
+
 
 const styles = StyleSheet.create({
   

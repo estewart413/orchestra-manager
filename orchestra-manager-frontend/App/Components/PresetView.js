@@ -7,9 +7,9 @@ function Separator() {
 
 const PresetView = props => {
     return (
-        <View>
+        <View style={styles.componentSyle}>
             <Separator/>
-            <Text styles={styles.text}>{props.title}</Text>
+            <Text style={styles.text}>{props.title}</Text>
             <Image 
                 styles={styles.imagePosition}
                 source={props.imageSource}
@@ -20,11 +20,16 @@ const PresetView = props => {
 
 const styles = StyleSheet.create({
     text: {
-        fontSize: 15,
-        marginLeft: 8
+        fontSize: 19,
+        textAlign: 'center'
     },
     separatorStyle: {
         marginTop: 20
+    },
+    componentSyle: {
+        backgroundColor: 'white'
+    },
+    imagePosition: {
     }
 });
 
