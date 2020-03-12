@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import PresetView from '../Components/PresetView';
 import navigation from 'react-navigation';
+import Separator from '../Components/Separator';
 
 const CreateEnsScreen = ({navigation}) => 
 {
@@ -36,7 +37,8 @@ const CreateEnsScreen = ({navigation}) =>
                     title="Marching Band" 
                     imageSource={require('../../assets/mband.jpg')}
                 />
-            </TouchableOpacity>
+            </TouchableOpacity>  
+
         </View>
     );
 };
