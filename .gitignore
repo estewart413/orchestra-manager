@@ -5,8 +5,10 @@ orchestra-manager/*
 orchestra-manager/node_modules
 orchestra-manager-backend/node_modules
 orchestra-manager-frontend/node_modules
+node_modules
 /.pnp
 .pnp.js
+package-info.json
 
 # testing
 /coverage

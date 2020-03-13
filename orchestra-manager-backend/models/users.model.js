@@ -3,7 +3,7 @@
 
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var mongooseUniqueValidator = require('mongoose-unique-validator');
+//var mongooseUniqueValidator = require('mongoose-unique-validator');
 
 var userSchema = new Schema({
     userType:    {type: String, required: true},                 //Admin, Orchestra Manager, Librarian, Member
@@ -15,5 +15,5 @@ var userSchema = new Schema({
 
 })
 
-Schema.plugin(mongooseUniqueValidator);
+//Schema.plugin(mongooseUniqueValidator);
 module.exports = mongoose.model('userSchema', userSchema);

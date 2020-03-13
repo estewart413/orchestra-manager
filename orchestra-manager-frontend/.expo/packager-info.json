@@ -2,8 +2,15 @@
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
+<<<<<<< HEAD
   "packagerPid": 18852,
   "expoServerNgrokUrl": "https://nn-s4c.anonymous.orchestra-manager-frontend.exp.direct",
   "packagerNgrokUrl": "https://packager.nn-s4c.anonymous.orchestra-manager-frontend.exp.direct",
   "ngrokPid": 21704
+=======
+  "packagerPid": 9108,
+  "expoServerNgrokUrl": "https://f7-75z.anonymous.orchestra-manager-frontend.exp.direct",
+  "packagerNgrokUrl": "https://packager.f7-75z.anonymous.orchestra-manager-frontend.exp.direct",
+  "ngrokPid": 13248
+>>>>>>> 3fd226b66d17180fa215d7e63b9b8171e8a96367
 }
