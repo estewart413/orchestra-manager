@@ -11,6 +11,10 @@ import HomeScreen from "./Screens/HomeScreen";
 import CreateEnsScreen from "./Screens/CreateEnsScreen";
 import InstrumentsList from "./Screens/InstrumentsList";
 import Registration from "./Screens/Registration";
+import so from "./Screens/presetScreens/so";
+import jb from "./Screens/presetScreens/jb";
+import mb from "./Screens/presetScreens/mb";
+import debug from "./Screens/debug";
 
 const work = createStackNavigator({
   //creates start-up screen to "Login"
@@ -20,6 +24,7 @@ const work = createStackNavigator({
       headerShown: false //hiding headers
     }
   },
+  ////////////////////////////////////////////////////
   Home: {
     screen: HomeScreen,
     navigationOptions: {
@@ -28,23 +33,62 @@ const work = createStackNavigator({
       headerTitleAlign: "center"
     }
   },
+  ////////////////////////////////////////////////////
   Ensemble: {
     screen: CreateEnsScreen,
     navigationOptions: {
       title: "Presets",
       headerBackTitleVisible: true,
       headerTitleAlign: "center"
-    },
-    Instruments: {
-      screen: InstrumentsList
     }
   },
+  ////////////////////////////////////////////////////
+  Instruments: {
+    screen: InstrumentsList
+  },
+  ////////////////////////////////////////////////////
   Registration: {
     screen: Registration,
     navigationOptions: {
       title: "Registration",
       headerTitleAlign: "center",
       headerShown: false
+    }
+  },
+  ////////////////////////////////////////////////////
+  so: {
+    screen: so,
+    navigationOptions: {
+      title: "Symphony Orchestra",
+      headerBackTitleVisible: true,
+      headerTitleAlign: "center"
+    }
+  },
+  ////////////////////////////////////////////////////
+  jb: {
+    screen: jb,
+    navigationOptions: {
+      title: "Jazz Band",
+      headerBackTitleVisible: true,
+      headerTitleAlign: "center"
+    }
+  },
+  ////////////////////////////////////////////////////
+  mb: {
+    screen: mb,
+    navigationOptions: {
+      title: "Marching Band",
+      headerBackTitleVisible: true,
+      headerTitleAlign: "center"
+    }
+  },
+  ////////////////////////////////////////////////////
+  debug: {
+    screen: debug,
+    navigationOptions: {
+      title: "Debug Screen",
+      headerBackTitleVisible: true,
+      headerTitleAlign: 'center'
     }
   }
 });

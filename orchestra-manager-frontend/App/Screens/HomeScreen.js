@@ -8,14 +8,17 @@ import {
   TouchableOpacity,
   TextInput
 } from "react-native";
+import Separator from '../Components/Separator';
 //---------------------------------------------------------
-function Separator() {
-  return <View style={styles.separatorStyle} />;
-}
+
 const PRIME_COLOR = "#008082";
+
 //---------------------------------------------------------
-const HomeScreen = ({navigation }) => 
+
+const HomeScreen = ({ navigation }) => 
 {
+  
+  
   return (
     <View style={styles.container}>
 
@@ -34,24 +37,22 @@ const HomeScreen = ({navigation }) =>
       
       <Button 
         style={styles.buttonStyle}
-        title="Go to List of Instruments"
+        title="Upload Parts"
         color= {PRIME_COLOR}
       /> 
 
       <Separator/>
-
-      <Button 
-        onPress={() => navigation.navigate('Instruments')}
+      
+      <Button
+        onPress={() => navigation.navigate('debug')}
         style={styles.buttonStyle}
-        title="Go to List of Instruments"
+        title="debug"
         color= {PRIME_COLOR}
-      /> 
-
-
-
+      />
     </View>
   );
 };
+
 
 const styles = StyleSheet.create({
   
