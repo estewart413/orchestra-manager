@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var mongooseUniqueValidator = require('mongoose-unique-validator');
+//var mongooseUniqueValidator = require('mongoose-unique-validator');
 
 var ensembleSchema = new Schema({
     enId:    {type: String, required: true},        //Ensemble Unique Id
@@ -12,5 +12,5 @@ var ensembleSchema = new Schema({
 
 })
 
-Schema.plugin(mongooseUniqueValidator);
+//Schema.plugin(mongooseUniqueValidator);
 module.exports = mongoose.model('ensembleSchema', ensembleSchema);
