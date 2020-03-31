@@ -17,7 +17,7 @@ router.route('/add').post((req, res) => {
     const userType = req.body.userType;
     const fName = req.body.fName;
     const lName = req.body.lName;
-    const password = req.body.password;
+    const password = User.generateHash(req.body.password);
     const email = req.body.email;
     const userName = req.body.userName;
 

@@ -1,6 +1,6 @@
 // Test Require
 //console.log('hello world from users.model');
-
+var bcrypt = require('bcrypt');
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 //var mongooseUniqueValidator = require('mongoose-unique-validator');
@@ -16,4 +16,15 @@ var userSchema = new Schema({
 })
 
 //Schema.plugin(mongooseUniqueValidator);
+
+//bcrypt Methods
+
+userSchema.static('generateHash', function(password){
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(9));
+});
+
+//userSchema.methods.validPassword = function(password){
+ //   return bcrypt.compareSync(password, this.local.password);
+//}
+
 module.exports = mongoose.model('userSchema', userSchema);
