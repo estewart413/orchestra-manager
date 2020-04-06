@@ -14,12 +14,6 @@ const debug = () => {
     );
 };
 
-const getUserInfo = () => {
-  return async () => {
-    this.setInfo = await mongoServer.get('/Users');
-  };
-};
-
 const styles = StyleSheet.create({
 
 });
