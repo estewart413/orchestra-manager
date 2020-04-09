@@ -3,13 +3,15 @@ let User = require ('../models/users.model');
 
 router.route('/').get((req, res) => {
     User.find()
+        .select('_id userType fName lName password email userName')
         .then(users => res.json(users))
         .catch(err => res.status(400).json('Error: ' + err))
 });
 
 router.route('/:id').get((req, res) => {
     User.findById(req.params.id)
-        .then(user => res.json(excercise))
+        .select('_id userType fName lName password email userName')
+        .then(user => res.json(user))
         .catch(err => res.status(400).json('Error' + err))
 });
 
