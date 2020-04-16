@@ -1,5 +1,6 @@
 const router = require('express').Router();
 let User = require ('../models/users.model');
+let bCrypt = require('bcrypt')
 
 router.route('/').get((req, res) => {
     User.find()
@@ -9,7 +10,7 @@ router.route('/').get((req, res) => {
 
 router.route('/:id').get((req, res) => {
     User.findById(req.params.id)
-        .then(user => res.json(excercise))
+        .then(user => res.json(user))
         .catch(err => res.status(400).json('Error' + err))
 });
 
@@ -42,7 +43,7 @@ router.route('/delete/:id').delete((req, res) => {
 });
 
 router.route('/edit/:id').put((req, res) => {
-    User.findbyID(req.params.id)
+    User.findAndModify(req.params.id)
         .then(user => {
             if (user.username != req.body.username)
                 user.username = req.body.username;
@@ -59,6 +60,30 @@ router.route('/edit/:id').put((req, res) => {
         });
 });
 
+router.route('/auth/').post(async (req, res) => {
+    const userName = req.body.userName;
+    const password = req.body.password;
 
+    try  {
+        let query = await User.findOne({"userName": userName},{_id:0, userType:0, fName:0, lName:0, email:0, userName:0, __v:0})
+        .catch(err => console.log(err).json("Error:" + err));
+        let serverpass = await query.password;
+
+        if (serverpass != undefined || serverpass != null) {
+            if (bCrypt.compareSync(password,serverpass) == true) {
+                res.status(200).json("User Authenticated!");
+            } else {
+                res.status(400).json("Passwords do not match.")
+            }
+        }
+        else if (serverpass == null) {
+            res.status(400).json("Error: could not find user");
+        }
+    }
+    catch (e) {
+        console.log(e).json("Error: " + e)
+    }
+        
+});
 
 module.exports = router;
