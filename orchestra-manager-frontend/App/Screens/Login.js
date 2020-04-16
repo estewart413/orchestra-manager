@@ -27,7 +27,7 @@ export default class Login extends React.Component {
           <Separator />
 
           <TextInput
-            placeholder="Email Address"
+            placeholder="Email Address/Username"
             placeholderTextColor="grey"
             style={styles.input}
           />
