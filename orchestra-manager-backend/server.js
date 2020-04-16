@@ -21,8 +21,10 @@ connection.once('open', () => {
 });
 
 const userRouter = require('./routes/users');
+const ensembleRouter = require('./routes/ensemble');
 
 app.use('/users', userRouter);
+app.use('/ensemble', ensembleRouter);
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
