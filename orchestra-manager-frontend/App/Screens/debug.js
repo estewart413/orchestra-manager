@@ -1,16 +1,10 @@
 import React, { useState, Component } from "react";
 import {
   View,
-  Text,
-  Button,
-  StyleSheet,
   FlatList,
-  ActivityIndicator,
 } from "react-native";
 
-import {List, ListItem} from 'react-native-elements';
-
-import axios from "axios";
+import {ListItem} from 'react-native-elements';
 
 class Debug extends Component {
   constructor(props) {
@@ -26,7 +20,7 @@ class Debug extends Component {
   }
 
   makeReq = () => {
-    const url = "http://407d04fe.ngrok.io/users";
+    const url = "http://218911b3.ngrok.io/users";
     fetch(url)
       .then(response => response.json())
       .then(responseJson => {
@@ -46,9 +40,8 @@ class Debug extends Component {
           data={this.state.dataSource}
           renderItem =  {({ item, index }) => (
             <ListItem
-              title = {item.fName + " " + item.lName}
-              subtitle = {item._id + "\n" + item.userType + "\n" + item.userName + "\n" + item.email + "\n" + item.password}
-            
+              title = {"FN " + item.fName + " " + "LN: " + item.lName}
+              subtitle = {"ID: " + item._id + "\n" + "UserType: " + item.userType + "\n" + "Username: " + item.userName + "\n" + "Email: " + item.email + "\n" + "Password: " + item.password}
             />
           )}  
           keyExtractor = {(item, index) => index.toString()}
