@@ -1,5 +1,9 @@
 const router = require('express').Router();
 let User = require ('../models/users.model');
+<<<<<<< HEAD
+=======
+let bCrypt = require('bcrypt');
+>>>>>>> 43535732522a34a09963f23c947003d635b27f4a
 
 router.route('/').get((req, res) => {
     User.find()
