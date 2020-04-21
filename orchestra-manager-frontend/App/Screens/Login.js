@@ -7,17 +7,39 @@ import {
   TouchableOpacity,
   Alert,
   TextInput,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
 } from "react-native";
+
+const axios = require("axios");
 
 function Separator() {
   return <View style={styles.separator} />;
 }
 
-export default class Login extends React.Component {
+class Login extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  onLoginPressed() {
+    const that = this;
+    axios
+      .post("http://3a4fbaef.ngrok.io/users/auth/", {
+        //email: this.state.email,
+        password: this.state.password,
+        userName: this.state.userName,
+      })
+      .then(function(response) {
+        if (response.status == 200) {
+          that.props.navigation.navigate("Home");
+        } else {
+          alert("Username or Password incorrect. Please try again.");
+        }
+      });
+  }
+
   render() {
     return (
-      <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
       <SafeAreaView style={styles.container}>
         <View>
           <Text style={styles.title}>Orchestra Manager</Text>
@@ -30,14 +52,17 @@ export default class Login extends React.Component {
             placeholder="Email Address/Username"
             placeholderTextColor="grey"
             style={styles.input}
+            onChangeText={(val) => this.setState({ userName: val })}
           />
           <Separator />
 
           <TextInput
             placeholder="Password"
-            placeholderTextColor='grey'
+            placeholderTextColor="grey"
             secureTextEntry={true}
             style={styles.input}
+            autoCapitalize="none"
+            onChangeText={(val) => this.setState({ password: val })}
           />
 
           <View>
@@ -47,7 +72,7 @@ export default class Login extends React.Component {
           <View>
             <TouchableOpacity
               style={styles.buttonPosition}
-              onPress={() => this.props.navigation.navigate("Home")}
+              onPress={this.onLoginPressed.bind(this)}
             >
               <Text style={styles.buttonText}>Log In</Text>
             </TouchableOpacity>
@@ -60,14 +85,13 @@ export default class Login extends React.Component {
           <View>
             <TouchableOpacity
               style={styles.linkButton}
-              onPress={() => this.props.navigation.navigate("Registration")}>
+              onPress={() => this.props.navigation.navigate("Registration")}
+            >
               <Text style={styles.linkButton}>Create an Account</Text>
             </TouchableOpacity>
           </View>
-
         </View>
       </SafeAreaView>
-      </KeyboardAvoidingView>
     );
   }
 }
@@ -78,16 +102,16 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     alignItems: "center",
     justifyContent: "center",
-    padding: 20
+    padding: 20,
   },
 
   separator: {
-    marginVertical: 10
+    marginVertical: 10,
   },
 
   title: {
     fontSize: 30,
-    color: "#2f4f4f"
+    color: "#2f4f4f",
   },
 
   buttonPosition: {
@@ -96,13 +120,13 @@ const styles = StyleSheet.create({
     width: 200,
     justifyContent: "center",
     alignItems: "center",
-    marginLeft: 25
+    marginLeft: 25,
   },
 
   buttonText: {
     color: "white",
     textAlign: "center",
-    fontSize: 18
+    fontSize: 18,
   },
 
   input: {
@@ -114,13 +138,14 @@ const styles = StyleSheet.create({
     borderBottomColor: "#696969",
     borderBottomWidth: 1,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
 
   linkButton: {
-    color: 'black',
-    textDecorationLine: 'underline',
-    alignItems: 'center',
-
-  }
+    color: "black",
+    textDecorationLine: "underline",
+    alignItems: "center",
+  },
 });
+
+export default Login;
