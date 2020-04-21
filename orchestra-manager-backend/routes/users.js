@@ -73,7 +73,7 @@ router.route('/auth/').post(async (req, res) => {
             if (bCrypt.compareSync(password,serverpass) == true) {
                 res.status(200).json("User Authenticated!");
             } else {
-                res.status(400).json("Passwords do not match.")
+                res.status(400).json("Passwords do not match.");
             }
         }
         else if (serverpass == null) {

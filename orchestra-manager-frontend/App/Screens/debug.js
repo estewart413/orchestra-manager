@@ -20,7 +20,7 @@ class Debug extends Component {
   }
 
   makeReq = () => {
-    const url = "http://218911b3.ngrok.io/users";
+    const url = "http://36291648.ngrok.io/users";
     fetch(url)
       .then(response => response.json())
       .then(responseJson => {
@@ -40,7 +40,7 @@ class Debug extends Component {
           data={this.state.dataSource}
           renderItem =  {({ item, index }) => (
             <ListItem
-              title = {"FN " + item.fName + " " + "LN: " + item.lName}
+              title = {"FN: " + item.fName + "   " + "LN: " + item.lName}
               subtitle = {"ID: " + item._id + "\n" + "UserType: " + item.userType + "\n" + "Username: " + item.userName + "\n" + "Email: " + item.email + "\n" + "Password: " + item.password}
             />
           )}  

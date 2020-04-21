@@ -6,6 +6,7 @@ import {
   SafeAreaView,
   TouchableOpacity,
   TextInput,
+  Alert,
 } from "react-native";
 
 const axios = require("axios");
@@ -20,7 +21,7 @@ class Registration extends React.Component {
   }
   onRegistrationPressed() {
     axios
-      .post("http://59460686.ngrok.io/users/add", {
+      .post("http://36291648.ngrok.io/users/add", {
         userType: this.state.userType,
         fName: this.state.fName,
         lName: this.state.lName,
@@ -31,6 +32,8 @@ class Registration extends React.Component {
       .then(function (response) {
         console.log(response);
       });
+    Alert.alert("Registration successful! Please login.");
+    this.props.navigation.navigate("Login");
   }
 
   render() {
@@ -47,6 +50,7 @@ class Registration extends React.Component {
             placeholder="User Role (ex. Librarian)"
             placeholderTextColor="grey"
             style={styles.input}
+            
             onChangeText={(val) => this.setState({ userType: val })}
           />
           <Separator />
@@ -79,6 +83,7 @@ class Registration extends React.Component {
             placeholder="Email Address"
             placeholderTextColor="grey"
             style={styles.input}
+            autoCapitalize = "none"
             onChangeText={(val) => this.setState({ email: val })}
           />
           <Separator />
@@ -88,6 +93,7 @@ class Registration extends React.Component {
             placeholderTextColor="grey"
             secureTextEntry={true}
             style={styles.input}
+            autoCapitalize = "none"
             onChangeText={(val) => this.setState({ password: val })}
           />
           <Separator />
@@ -106,7 +112,6 @@ class Registration extends React.Component {
             <TouchableOpacity
               style={styles.buttonPosition}
               onPress={this.onRegistrationPressed.bind(this)}
-             
             >
               <Text style={styles.buttonText}>Create Account</Text>
             </TouchableOpacity>
