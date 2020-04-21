@@ -24,12 +24,12 @@ class Login extends React.Component {
   onLoginPressed() {
     const that = this;
     axios
-      .post("http://36291648.ngrok.io/users/auth/", {
+      .post("http://3a4fbaef.ngrok.io/users/auth/", {
         //email: this.state.email,
         password: this.state.password,
         userName: this.state.userName,
       })
-      .then(function (response) {
+      .then(function(response) {
         if (response.status == 200) {
           that.props.navigation.navigate("Home");
         } else {
@@ -61,6 +61,7 @@ class Login extends React.Component {
             placeholderTextColor="grey"
             secureTextEntry={true}
             style={styles.input}
+            autoCapitalize="none"
             onChangeText={(val) => this.setState({ password: val })}
           />
 

@@ -21,7 +21,7 @@ class Registration extends React.Component {
   }
   onRegistrationPressed() {
     axios
-      .post("http://36291648.ngrok.io/users/add", {
+      .post("http://3a4fbaef.ngrok.io/users/add", {
         userType: this.state.userType,
         fName: this.state.fName,
         lName: this.state.lName,
@@ -32,8 +32,17 @@ class Registration extends React.Component {
       .then(function (response) {
         console.log(response);
       });
-    Alert.alert("Registration successful! Please login.");
-    this.props.navigation.navigate("Login");
+      
+    const { userType, userName, fName, lName, email, password} = this.state;
+
+    if (userType == null || userName == null || fName == null || lName == null || email == null || password == null) {
+      alert('Please fill all fields.');
+    }
+    else {
+      Alert.alert("Registration successful! Please login.");
+      this.props.navigation.navigate("Login");
+  
+    }
   }
 
   render() {
@@ -50,7 +59,6 @@ class Registration extends React.Component {
             placeholder="User Role (ex. Librarian)"
             placeholderTextColor="grey"
             style={styles.input}
-            
             onChangeText={(val) => this.setState({ userType: val })}
           />
           <Separator />
