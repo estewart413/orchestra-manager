@@ -1,83 +1,67 @@
-import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  SafeAreaView,
-  Button,
-  TouchableOpacity,
-  TextInput
-} from "react-native";
-import Separator from '../Components/Separator';
-//---------------------------------------------------------
-
+//This screen must contain list of ensables created by the user, 
+//as well as a button that allows to create new ensamble.
+import React, { useContext } from "react";
+import { StyleSheet, Text, View, FlatList, Button, TouchableOpacity } from "react-native";
+import { Context } from "../context/EnsembleContext";
+import { Ionicons, AntDesign } from '@expo/vector-icons';
+////////////////////////////////////////////////////////
 const PRIME_COLOR = "#008082";
+////////////////////////////////////////////////////////
+const HomeScreen = ({ navigation }) => {
+  const { state, addEnsemble, deleteEnsemble } = useContext(Context);
 
-//---------------------------------------------------------
-
-const HomeScreen = ({ navigation }) => 
-{
-  
-  
   return (
-    <View style={styles.container}>
-
-      <Separator />
-      <Separator />
-      <Separator />
-
-      <Button
-        onPress={() => navigation.navigate('Ensemble')}
-        style={styles.buttonStyle}
-        title="Create Ensemble"
-        color= {PRIME_COLOR}
-      />
-
-      <Separator/>
-      
-      <Button 
-        style={styles.buttonStyle}
-        title="Upload Parts"
-        color= {PRIME_COLOR}
-      /> 
-
-      <Separator/>
-      
-      <Button
-        onPress={() => navigation.navigate('debug')}
-        style={styles.buttonStyle}
-        title="debug"
-        color= {PRIME_COLOR}
+    <View>
+      <Button title="Add Ensemble" onPress={addEnsemble} />
+      <FlatList
+        data={state}
+        keyExtractor={(ensemble) => ensemble.title}
+        renderItem={({ item }) => {
+          return (
+            <TouchableOpacity onPress={() => navigation.navigate('ShowEnsemble', { id: item.id})}>
+              <View style={styles.row}>
+                <Text style={styles.title}>
+                  {item.title} - {item.id}
+                </Text>
+                <TouchableOpacity onPress={() => deleteEnsemble(item.id)}>
+                  <Ionicons style={styles.icon} name="md-remove-circle-outline" />
+                </TouchableOpacity>
+              </View>
+            </TouchableOpacity>
+          );
+        }}
       />
     </View>
   );
 };
-
-
+////////////////////////////////////////////////////////
+HomeScreen.navigationOptions = ({ navigation }) => {
+  return {
+    headerRight: () => 
+      <TouchableOpacity onPress={() => navigation.navigate('CreateEnsemble')}>
+        <AntDesign name="pluscircleo" size={24} style={styles.headerButton} />
+      </TouchableOpacity>
+  }
+}
+////////////////////////////////////////////////////////
 const styles = StyleSheet.create({
-  
-  container: {
-    padding: 20,
-    backgroundColor: "white",
-    flex: 6
-  },
-  separatorStyle: {
-    marginVertical: 10
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingVertical: 20,
+    paddingHorizontal: 10,
+    borderTopWidth: 1,
+    borderColor: 'grey'
   },
   title: {
-    fontSize: 30,
-    color: "#2f4f4f",
-    textAlign: "center",
-    justifyContent: "center",
-    marginTop: 55
+    fontSize: 18
   },
-  buttonStyle: {
-    height: 35,
-    width: 200,
-    justifyContent: "center",
-    alignItems: "center",
-    marginLeft: 25
+  icon: {
+    fontSize: 20
+  },
+  headerButton: {
+    marginRight: 8
   }
 });
-
+////////////////////////////////////////////////////////
 export default HomeScreen;
