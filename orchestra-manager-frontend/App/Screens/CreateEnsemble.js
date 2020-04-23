@@ -36,7 +36,6 @@ const CreateEnsemble = ({ navigation }) => {
           <Picker
             style={{ height: 50, width: 200 }}
             selectedValue={selectedValue}
-            //Put onValueChange here
             onValueChange={(itemValue, itemIndex) =>
               setSelectedValue(itemValue)
             }
@@ -45,7 +44,7 @@ const CreateEnsemble = ({ navigation }) => {
               <Picker.Item
                 key={instrument._id}
                 label={instrument.name}
-                value={instrument.value}
+                value={instrument.name}
               />
             ))}
           </Picker>
