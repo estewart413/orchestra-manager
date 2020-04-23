@@ -14,21 +14,21 @@ const CreateEnsemble = ({ navigation }) => {
     const [selectedValueUser, setSelectedValueUser] = useState([]);
     ///////////////////////////////////////////////////////////////
     useEffect(() => {
-        axios.get("http://cb24d711.ngrok.io/instruments")
+        axios.get("http://f9e10cde.ngrok.io/instruments")
         .then(res => {
             setInstruments(res.data);
             console.log(instruments)
         })
         ////////////////////////////////////////////
-        axios.get("http://cb24d711.ngrok.io/users")
+        axios.get("http://f9e10cde.ngrok.io/users")
         .then(res => {
             setUsers(res.data);
             console.log(users)
         })
     }, []);
 
-    //console.log(selectedValue)
-    //console.log(selectedValueUser)
+    console.log(selectedValue)
+    console.log(selectedValueUser)
     ////////////////////////////////////////////////////////////////////////////
     return (
       <View>
@@ -45,7 +45,7 @@ const CreateEnsemble = ({ navigation }) => {
               <Picker.Item
                 key={instrument._id}
                 label={instrument.name}
-                value={instrument.name}
+                value={instrument.value}
               />
             ))}
           </Picker>

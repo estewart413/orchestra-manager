@@ -27,7 +27,7 @@ const instrumentRouter = require('./routes/instruments');
 
 app.use('/users', userRouter);
 app.use('/ensemble', ensembleRouter);
-app.use('/instruments', instrumentRouter )
+app.use('/instruments', instrumentRouter);
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

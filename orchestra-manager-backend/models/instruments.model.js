@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 
 var instrumentSchema = new Schema({
     name:    {type: String},        
-    value:   {type: String}
+    value:   {type: String},
 })
 
 //Schema.plugin(mongooseUniqueValidator);
