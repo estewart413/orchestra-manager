@@ -10,6 +10,7 @@ export default (reducer, actions, initialState) => {
     // actions === { addEnsemble: (dispatch) => { return () => {} }
     const boundActions = {};
     for (let key in actions) {
+      // key === 'addEnsemble'
         boundActions[key] = actions[key](dispatch);
     }
 

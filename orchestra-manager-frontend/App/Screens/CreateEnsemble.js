@@ -1,9 +1,7 @@
 import React, {
   useContext,
   useState,
-  useEffect,
-  Component,
-  State,
+  useEffect
 } from "react";
 import {
   Text,
@@ -11,30 +9,37 @@ import {
   StyleSheet,
   Picker,
   FlatList,
-  Image,
-  TouchableOpacity,
-  Item,
+  TouchableOpacity
 } from "react-native";
 /////////////////////////////////////////////////////
 import axios from "axios";
-import { set } from "mongoose";
 import { Ionicons, AntDesign } from "@expo/vector-icons";
+import { Context } from "../context/EnsembleContext";
 //////////////////////////////////////////////////////////
 const CreateEnsemble = ({ navigation }) => {
+  //make use of a context to get access to its data
+  const { state, addEnsemble, deleteEnsemble, saveEnsemble } = useContext(Context);
+
+
   const [instruments, setInstruments] = useState([]);
   const [users, setUsers] = useState([]);
   /////////////////////////////////////////////////////
+  //state of instrument picker 
   const [selectedValue, setSelectedValue] = useState([]);
+  //state of user picker
   const [selectedValueUser, setSelectedValueUser] = useState([]);
+  /////////////////////////////////
+  //state of both pickers in object
   const [chairs, setChairs] = useState([]);
+
   ///////////////////////////////////////////////////////////////
   useEffect(() => {
-    axios.get("http://6918f8c5.ngrok.io/instruments").then((res) => {
+    axios.get("http://5da415c7.ngrok.io/instruments").then((res) => {
       setInstruments(res.data);
       //console.log(instruments)
     });
     ////////////////////////////////////////////
-    axios.get("http://6918f8c5.ngrok.io/users").then((res) => {
+    axios.get("http://5da415c7.ngrok.io/users").then((res) => {
       setUsers(res.data);
       //console.log(users)
     });
@@ -106,7 +111,7 @@ const CreateEnsemble = ({ navigation }) => {
                 <Text style={styles.chairStyle}>
                   {item.selectedValue + " - " + item.selectedValueUser}
                 </Text>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => console.log(item.key)}>
                   <Ionicons
                     style={styles.icon}
                     name="md-remove-circle-outline"
@@ -116,6 +121,11 @@ const CreateEnsemble = ({ navigation }) => {
             );
           }}
         ></FlatList>
+      </View>
+      <View style={styles.secondContainer}>
+        <TouchableOpacity style={styles.buttonPosition} onPress={(chairs) => addEnsemble(chairs)}>
+          <Text style={styles.buttonText}>Save Ensemble</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
