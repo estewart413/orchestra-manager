@@ -1,10 +1,15 @@
-import React from 'react';
-import Navigator from './App/Navigator';
+import React from "react";
+import Navigator from "./App/Navigator";
+import { Provider } from "./App/context/EnsembleContext";
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <Navigator/>
-    );
-  }
-}
+const App = () => {
+  return <Navigator />;
+};
+
+export default () => {
+  return (
+    <Provider>
+      <App/>
+    </Provider>
+  );
+};

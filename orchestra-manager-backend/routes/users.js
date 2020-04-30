@@ -1,5 +1,5 @@
 const router = require('express').Router();
-let User = require ('../models/users.model');
+let User = require('../models/users.model');
 let bCrypt = require('bcrypt');
 
 router.route('/').get((req, res) => {
