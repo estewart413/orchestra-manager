@@ -20,7 +20,7 @@ class Debug extends Component {
   }
 
   makeReq = () => {
-    const url = "http://36291648.ngrok.io/users";
+    const url = "http://d539c574.ngrok.io/users";
     fetch(url)
       .then(response => response.json())
       .then(responseJson => {

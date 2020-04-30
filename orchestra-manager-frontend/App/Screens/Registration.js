@@ -15,13 +15,15 @@ function Separator() {
   return <View style={styles.separator} />;
 }
 
+console.disableYellowBox = true;
+
 class Registration extends React.Component {
   constructor() {
     super();
   }
   onRegistrationPressed() {
     axios
-      .post("http://3a4fbaef.ngrok.io/users/add", {
+      .post("http://d539c574.ngrok.io/users/add", {
         userType: this.state.userType,
         fName: this.state.fName,
         lName: this.state.lName,
@@ -32,16 +34,21 @@ class Registration extends React.Component {
       .then(function (response) {
         console.log(response);
       });
-      
-    const { userType, userName, fName, lName, email, password} = this.state;
 
-    if (userType == null || userName == null || fName == null || lName == null || email == null || password == null) {
-      alert('Please fill all fields.');
-    }
-    else {
+    const { userType, userName, fName, lName, email, password } = this.state;
+
+    if (
+      userType == null ||
+      userName == null ||
+      fName == null ||
+      lName == null ||
+      email == null ||
+      password == null
+    ) {
+      alert("Please fill all fields.");
+    } else {
       Alert.alert("Registration successful! Please login.");
       this.props.navigation.navigate("Login");
-  
     }
   }
 
@@ -91,7 +98,7 @@ class Registration extends React.Component {
             placeholder="Email Address"
             placeholderTextColor="grey"
             style={styles.input}
-            autoCapitalize = "none"
+            autoCapitalize="none"
             onChangeText={(val) => this.setState({ email: val })}
           />
           <Separator />
@@ -101,7 +108,7 @@ class Registration extends React.Component {
             placeholderTextColor="grey"
             secureTextEntry={true}
             style={styles.input}
-            autoCapitalize = "none"
+            autoCapitalize="none"
             onChangeText={(val) => this.setState({ password: val })}
           />
           <Separator />
