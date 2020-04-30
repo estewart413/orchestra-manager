@@ -34,12 +34,12 @@ const CreateEnsemble = ({ navigation }) => {
 
   ///////////////////////////////////////////////////////////////
   useEffect(() => {
-    axios.get("http://66ded9b9.ngrok.io/instruments").then((res) => {
+    axios.get("http://ad57ae03.ngrok.io/instruments").then((res) => {
       setInstruments(res.data);
       //console.log(instruments)
     });
     ////////////////////////////////////////////
-    axios.get("http://66ded9b9.ngrok.io/users").then((res) => {
+    axios.get("http://ad57ae03.ngrok.io/users").then((res) => {
       setUsers(res.data);
       //console.log(users)
     });

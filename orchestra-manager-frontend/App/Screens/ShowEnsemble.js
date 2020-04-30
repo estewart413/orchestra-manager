@@ -62,7 +62,8 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         shadowColor: "#000",
         paddingHorizontal: 25,
-        elevation: 0.2
+        elevation: 0.2,
+        color: "#2f4f4f"
     },
     titleView: {
         paddingVertical: 10,

@@ -17,14 +17,14 @@ const HomeScreen = ({ navigation }) => {
       </View>
       <FlatList
         data={state}
-        style={{ width: '100%' }}
+        style={{ width: '88%' }}
         keyExtractor={(ensemble) => ensemble.title}
         renderItem={({ item }) => {
           return (
             <TouchableOpacity onPress={() => navigation.navigate('ShowEnsemble', { id: item.id})}>
               <View style={styles.flatlistViewStyle}>
                 <Text style={styles.flatlistTextStyle}>
-                  {item.title} - {item.id}
+                  {item.title}
                 </Text>
                 <TouchableOpacity onPress={() => deleteEnsemble(item.id)}>
                   <Ionicons style={styles.icon} name="md-remove-circle-outline" />
@@ -60,7 +60,8 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     shadowColor: "#000",
     paddingHorizontal: 25,
-    elevation: 0.2
+    elevation: 0.2,
+    color: "#2f4f4f"
   },
   flatlistViewStyle: {
     flexDirection: 'row',
