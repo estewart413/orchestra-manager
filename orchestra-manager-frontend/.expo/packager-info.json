@@ -2,9 +2,9 @@
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 7956,
+  "packagerPid": 12000,
   "expoServerNgrokUrl": "https://ws-c8j.anonymous.orchestra-manager-frontend.exp.direct",
   "packagerNgrokUrl": "https://packager.ws-c8j.anonymous.orchestra-manager-frontend.exp.direct",
-  "ngrokPid": 8844,
+  "ngrokPid": 7064,
   "webpackServerPort": null
 }

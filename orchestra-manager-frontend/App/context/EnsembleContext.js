@@ -13,8 +13,8 @@ const ensembleReducer = (state, action) => {
         ...state,
         {
           id: Math.floor(Math.random() * 999999),
-          title: `Ensemble #${state.length + 1}`,
-          capacity: CreateEnsemble.chairs
+          title: action.payload.title,
+          chairs: action.payload.chairs
         },
       ];
     default:
@@ -23,8 +23,9 @@ const ensembleReducer = (state, action) => {
 };
 ////////////////////////////////////////////////////
 const addEnsemble = dispatch => {
-  return (chairs) => {
-    dispatch({ type: "add_ensemble", payload: chairs});
+  return (chairs, title, callback) => {
+    dispatch({ type: "add_ensemble", payload: {chairs, title}});
+    callback();
   };
 };
 
@@ -33,14 +34,9 @@ const deleteEnsemble = dispatch => {
     dispatch({ type: "delete_ensemble", payload: id });
   };
 };
-const saveEnsamble = dispatch => {
-  return () => {
-    dispatch({ type: "saveEnsemble"})
-  }
-}
 ///////////////////////////////////////////////////////////
 export const { Context, Provider } = createDataContext(
   ensembleReducer,
-  { addEnsemble, deleteEnsemble, saveEnsamble },
+  { addEnsemble, deleteEnsemble },
   []
 );

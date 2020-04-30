@@ -11,16 +11,19 @@ const HomeScreen = ({ navigation }) => {
   const { state, addEnsemble, deleteEnsemble } = useContext(Context);
 
   return (
-    <View>
-      <Button title="Add Ensemble" onPress={addEnsemble} />
+    <View style={styles.container}>
+      <View style={styles.titleView}>
+        <Text style={styles.titleText}>Ensembles stored here !</Text>
+      </View>
       <FlatList
         data={state}
+        style={{ width: '100%' }}
         keyExtractor={(ensemble) => ensemble.title}
         renderItem={({ item }) => {
           return (
             <TouchableOpacity onPress={() => navigation.navigate('ShowEnsemble', { id: item.id})}>
-              <View style={styles.row}>
-                <Text style={styles.title}>
+              <View style={styles.flatlistViewStyle}>
+                <Text style={styles.flatlistTextStyle}>
                   {item.title} - {item.id}
                 </Text>
                 <TouchableOpacity onPress={() => deleteEnsemble(item.id)}>
@@ -45,6 +48,36 @@ HomeScreen.navigationOptions = ({ navigation }) => {
 }
 ////////////////////////////////////////////////////////
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'white',
+    alignItems: 'center',
+  },
+  titleText: {
+    fontSize: 23,
+    borderWidth: 1,
+    padding: 5 ,
+    borderRadius: 5,
+    shadowColor: "#000",
+    paddingHorizontal: 25,
+    elevation: 0.2
+  },
+  flatlistViewStyle: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginHorizontal: 10,
+    marginVertical: 8,
+    padding: 5,
+    //borderTopWidth: 0.5,
+    //borderTopColor: 'grey',
+    borderBottomWidth: 0.5,
+    borderBottomColor: 'grey',
+  },
+  flatlistTextStyle: {
+    fontSize: 18,
+    marginVertical: 12,
+  },
   row: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -53,11 +86,12 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderColor: 'grey'
   },
-  title: {
-    fontSize: 18
+  titleView: {
+    paddingVertical: 10,
+    marginTop: 8
   },
   icon: {
-    fontSize: 20
+    fontSize: 25
   },
   headerButton: {
     marginRight: 8
