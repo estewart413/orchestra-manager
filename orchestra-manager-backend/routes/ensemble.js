@@ -20,6 +20,7 @@ router.route('/add').post((req, res) => {
     const accManager = req.body.accManager;
     const accConduct = req.body.accConduct;
     const accLibrarian = req.body.accLibrarian;
+    const accMember = req.body.accMember;
 
     const newEnsemble = new Ensemble({
         enId,
@@ -28,6 +29,7 @@ router.route('/add').post((req, res) => {
         accManager,
         accConduct ,
         accLibrarian,
+        accMember
     });
 
     newEnsemble.save()
@@ -56,7 +58,36 @@ router.route('/edit/:id').put((req, res) => {
             ensemble.email = req.body.email;
             if (ensemble.accLibrarian != req.body.accLibrarian)
             ensemble.accLibrarian = req.body.accLibrarian;
+            if (ensemble.accMember != req.body.accMember)
+            ensemble.accMember = req.body.accMember;
         });
 });
+
+router.route('/addMember/').put(async (req, res) => {
+    let userName = req.body.userName;
+    let enID = req.body.enID;
+
+    try {
+        let query = await Ensemble.findOne({"enId": enID },{_id:0, enID:0, enName:0, enType:0, accManager:0, accConduct:0, accLibrarian:0, __v:0})
+        .catch(err => console.log(err).json("Error:" + err));
+        console.log(query.accMember);
+        let memberList = await query.accMember;
+        let addedCheck = "";
+        await memberList.forEach(element => {
+            if (element==userName) {
+                addedCheck = true;
+                console.log(userName).json("Username already added.");
+            }
+            });
+        if (addedCheck != true) {
+            memberList.push(userName);
+            query.accMember = memberList;
+            query.save();
+        }
+    }
+    catch (err) {
+        console.log(err).json("Error" + err);
+    }
+    });
 
 module.exports = router;
