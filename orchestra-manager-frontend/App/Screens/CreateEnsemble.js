@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Picker,
   FlatList,
+  SafeAreaView,
   TouchableOpacity,
   TextInput,
 } from "react-native";
@@ -13,6 +14,8 @@ import axios from "axios";
 import { Ionicons, AntDesign } from "@expo/vector-icons";
 import { Context } from "../context/EnsembleContext";
 import { ScrollView } from "react-native-gesture-handler";
+
+
 //////////////////////////////////////////////////////////
 const CreateEnsemble = ({ navigation }) => {
   ////////////TITLE_STATE//////////////////////
@@ -34,12 +37,12 @@ const CreateEnsemble = ({ navigation }) => {
 
   ///////////////////////////////////////////////////////////////
   useEffect(() => {
-    axios.get("http://ad57ae03.ngrok.io/instruments").then((res) => {
+    axios.get("http://d539c574.ngrok.io/instruments").then((res) => {
       setInstruments(res.data);
       //console.log(instruments)
     });
     ////////////////////////////////////////////
-    axios.get("http://ad57ae03.ngrok.io/users").then((res) => {
+    axios.get("http://d539c574.ngrok.io/users").then((res) => {
       setUsers(res.data);
       //console.log(users)
     });
@@ -51,21 +54,31 @@ const CreateEnsemble = ({ navigation }) => {
 
   ////////////////////////////////////////////////////////////////////////////
 
+
+  function Separator() {
+    return <View style={styles.separator} />;
+  }
+
+
   return (
     <View style={styles.container}>
       <TextInput
-        placeholder={"Enter Ensemble Name"}
+        placeholder={"Create Ensemble Name"}
         placeholderTextColor="grey"
         value={title}
         onChangeText={(text) => setTitle(text)}
         style={{
           padding: 10,
-          borderBottomWidth: 1,
           borderBottomColor: "black",
+          borderBottomWidth: 1,
           fontSize: 18,
           margin: 10,
         }}
+        
       />
+     
+       <Separator/>
+      <Text style={{fontSize: 18, fontWeight: 'bold'}}>Select Instrument: </Text>
       <View style={styles.pickerContainer}>
         <Picker
           style={{ height: 50, width: 200 }}
@@ -80,6 +93,10 @@ const CreateEnsemble = ({ navigation }) => {
             />
           ))}
         </Picker>
+        </View>
+        <View>
+         <Separator/>
+         <Text style={{textAlign: 'center', fontSize: 18, fontWeight: 'bold'}}>Select User: </Text>
         <Picker
           style={{ height: 50, width: 200 }}
           selectedValue={selectedValueUser}
@@ -98,7 +115,7 @@ const CreateEnsemble = ({ navigation }) => {
       </View>
 
       <TouchableOpacity
-        style={styles.buttonPosition}
+        style={styles.firstButtonPosition}
         onPress={() => {
           setChairs([
             ...chairs,
@@ -111,13 +128,15 @@ const CreateEnsemble = ({ navigation }) => {
             },
           ]);
         }}
+        
       >
-        <Text style={styles.buttonText}>Add Player</Text>
+        <Text style={styles.buttonText}>Add</Text>
+
       </TouchableOpacity>
       <FlatList
         data={chairs}
         keyExtractor={(chair) => chair.key}
-        style={{width: '100%', }}
+        style={{width: '100%', borderColor: 'black', borderWidth: 1}}
         showsHorizontalScrollIndicator={false}
         renderItem={({ item }) => {
           return (
@@ -136,7 +155,7 @@ const CreateEnsemble = ({ navigation }) => {
         }}
       ></FlatList>
       <TouchableOpacity
-        style={styles.buttonPosition}
+        style={styles.secondButtonPosition}
         onPress={() =>
           addEnsemble(chairs, title, () => {
             navigation.navigate("Home");
@@ -155,6 +174,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "white",
     alignItems: "center",
+    padding: 20
   },
   pickerContainer: {
     flexDirection: "row"
@@ -165,7 +185,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     marginHorizontal: 10,
-    marginVertical: 8,
+    marginVertical: 2,
     padding: 5,
     //borderTopWidth: 0.5,
     //borderTopColor: 'grey',
@@ -178,13 +198,27 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginVertical: 12
   },
-  buttonPosition: {
+
+  separator: {
+    marginVertical: 10,
+  },
+
+  firstButtonPosition: {
+    backgroundColor: "#008080",
+    height: 35,
+    width: 90,
+    alignItems: "center",
+    margin: 10,
+  },
+
+  secondButtonPosition: {
     backgroundColor: "#008080",
     height: 35,
     width: 200,
     alignItems: "center",
     margin: 10,
   },
+
   buttonText: {
     color: "white",
     fontSize: 18,

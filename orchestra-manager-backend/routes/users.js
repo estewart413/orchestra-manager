@@ -77,7 +77,7 @@ router.route('/auth/').post(async (req, res) => {
             }
         }
         else if (serverpass == null) {
-            res.status(400).json("Error: could not find user");
+            res.status(400).json("ErrorTEST : could not find user");
         }
     }
     catch (e) {

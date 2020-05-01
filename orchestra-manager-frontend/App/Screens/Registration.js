@@ -15,7 +15,7 @@ function Separator() {
   return <View style={styles.separator} />;
 }
 
-console.disableYellowBox = true;
+//console.disableYellowBox = true;
 
 class Registration extends React.Component {
   constructor() {
@@ -23,7 +23,7 @@ class Registration extends React.Component {
   }
   onRegistrationPressed() {
     axios
-      .post("http://3a4fbaef.ngrok.io/users/add", {
+      .post("http://d539c574.ngrok.io/users/add", {
         userType: this.state.userType,
         fName: this.state.fName,
         lName: this.state.lName,
