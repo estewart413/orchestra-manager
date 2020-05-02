@@ -1,9 +1,10 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 19072,
-  "expoServerNgrokUrl": "https://4g-33q.anonymous.orchestra-manager-frontend.exp.direct",
-  "packagerNgrokUrl": "https://packager.4g-33q.anonymous.orchestra-manager-frontend.exp.direct",
-  "ngrokPid": 20152
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null,
+  "webpackServerPort": null
 }

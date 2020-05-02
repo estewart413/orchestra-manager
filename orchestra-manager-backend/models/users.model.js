@@ -20,13 +20,10 @@ var userSchema = new Schema({
 //bcrypt Methods
 
 userSchema.static('generateHash', function(password){
-
     return bcrypt.hashSync(password, 9);
 });
 
 //userSchema.methods.validatePassword = function(password) {
 //    bcrypt.compareSync(password, this.password);
 //};
-
-
 module.exports = mongoose.model('userSchema', userSchema);

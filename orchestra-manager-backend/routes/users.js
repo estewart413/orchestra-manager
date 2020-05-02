@@ -1,5 +1,5 @@
 const router = require('express').Router();
-let User = require ('../models/users.model');
+let User = require('../models/users.model');
 let bCrypt = require('bcrypt');
 
 router.route('/').get((req, res) => {
@@ -72,7 +72,7 @@ router.route('/auth/').post(async (req, res) => {
             if (bCrypt.compareSync(password,serverpass) == true) {
                 res.status(200).json("User Authenticated!");
             } else {
-                res.status(400).json("Passwords do not match.")
+                res.status(400).json("Passwords do not match.");
             }
         } else {
              let query = await User.findOne({"userName": userName},{_id:0, userType:0, fName:0, lName:0, email:0, userName:0, __v:0})
