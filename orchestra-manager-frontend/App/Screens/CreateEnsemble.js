@@ -37,12 +37,12 @@ const CreateEnsemble = ({ navigation }) => {
 
   ///////////////////////////////////////////////////////////////
   useEffect(() => {
-    axios.get("http://d539c574.ngrok.io/instruments").then((res) => {
+    axios.get("http://369898df.ngrok.io/instruments").then((res) => {
       setInstruments(res.data);
       //console.log(instruments)
     });
     ////////////////////////////////////////////
-    axios.get("http://d539c574.ngrok.io/users").then((res) => {
+    axios.get("http://369898df.ngrok.io/users").then((res) => {
       setUsers(res.data);
       //console.log(users)
     });

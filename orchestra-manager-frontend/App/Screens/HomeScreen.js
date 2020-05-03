@@ -1,5 +1,5 @@
-//This screen must contain list of ensables created by the user, 
-//as well as a button that allows to create new ensamble.
+//This screen must contain list of ensembles created by the user, 
+//as well as a button that allows to create new ensemble.
 import React, { useContext } from "react";
 import { StyleSheet, Text, View, FlatList, Button, TouchableOpacity } from "react-native";
 import { Context } from "../context/EnsembleContext";
