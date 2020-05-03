@@ -61,23 +61,36 @@ router.route('/edit/:id').put((req, res) => {
 });
 
 router.route('/auth/').post(async (req, res) => {
-    const userName = req.body.userName;
+    const userName= req.body.userName;
     const password = req.body.password;
-
     try  {
-        let query = await User.findOne({"userName": userName},{_id:0, userType:0, fName:0, lName:0, email:0, userName:0, __v:0})
-        .catch(err => console.log(err).json("Error:" + err));
-        let serverpass = await query.password;
+        if (userName.search("@") != "-1" && userName.search(".") != "-1") {
+            let query = await User.findOne({"email": userName},{_id:0, userType:0, fName:0, lName:0, email:0, userName:0, __v:0})
+            .catch(err => console.log(err).json("Error:" + err));
+            if (await query == null || await query == undefined) {
+                res.status(400).json("Username not found!")
+            } else {
+                let serverpass = await query.password;
 
-        if (serverpass != undefined || serverpass != null) {
-            if (bCrypt.compareSync(password,serverpass) == true) {
+                if (bCrypt.compareSync(password,serverpass) == true) {
+                    res.status(200).json("User Authenticated!");
+                } else {
+                    res.status(400).json("Passwords do not match.");
+                }
+            }
+        } else {
+             let query = await User.findOne({"userName": userName},{_id:0, userType:0, fName:0, lName:0, email:0, userName:0, __v:0})
+             .catch(err => console.log(err).json("Error:" + err));
+            if (query == null || query == undefined) {
+                res.status(400).json("Username not found!")
+            }
+             let serverpass = await query.password;
+             
+             if (bCrypt.compareSync(password,serverpass) == true) {
                 res.status(200).json("User Authenticated!");
             } else {
                 res.status(400).json("Passwords do not match.");
             }
-        }
-        else if (serverpass == null) {
-            res.status(400).json("ErrorTEST : could not find user");
         }
     }
     catch (e) {

@@ -8,4 +8,4 @@ var instrumentSchema = new Schema({
 })
 
 //Schema.plugin(mongooseUniqueValidator);
-module.exports = mongoose.model('instrumentSchema', instrumentSchema); 
+module.exports = mongoose.model('instrumentSchema', instrumentSchema);

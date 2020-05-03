@@ -15,7 +15,7 @@ function Separator() {
   return <View style={styles.separator} />;
 }
 
-//console.disableYellowBox = true;
+console.disableYellowBox = true;
 
 class Registration extends React.Component {
   constructor() {
