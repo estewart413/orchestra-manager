@@ -1,7 +1,15 @@
 import React, { useContext } from "react";
-import { Text, View, StyleSheet, FlatList, Item, TouchableOpacity } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  FlatList,
+  Item,
+  TouchableOpacity,
+} from "react-native";
 import { Context } from "../context/EnsembleContext";
-import { Entypo } from '@expo/vector-icons';
+import { Entypo } from "@expo/vector-icons";
+import { CheckBox } from "react-native-elements";
 
 const ShowEnsemble = ({ navigation }) => {
   const { state } = useContext(Context);
@@ -18,12 +26,15 @@ const ShowEnsemble = ({ navigation }) => {
         <Text style={styles.titleText}>{ensemble.title}</Text>
       </View>
       <FlatList
-        style={{ width: '80%'}}
+        style={{ width: "80%" }}
         data={ensemble.chairs}
         renderItem={({ item }) => (
-          <Text style={styles.playerText}>
-            {item.selectedValue + " - " + item.selectedValueUser}
-          </Text>
+          <View>
+            <Text style={styles.playerText}>
+              {item.selectedValue + " - " + item.selectedValueUser}
+            </Text>
+            <CheckBox title="music returned" checked={false}/>
+          </View>
         )}
         //keyExtractor={(ensemble.chair) => ensemble.chair}
       ></FlatList>
@@ -31,15 +42,13 @@ const ShowEnsemble = ({ navigation }) => {
   );
 };
 
-
-
 //////////HEADER_FEATHER_FRO_NAVIGATION_TO_EDITeNSEMBLE///////////
 ShowEnsemble.navigationOptions = ({ navigation }) => {
   return {
     headerRight: () => (
       <TouchableOpacity
         onPress={() =>
-          navigation.navigate("EditEnsemble", { id: navigation.getParam('id') })
+          navigation.navigate("EditEnsemble", { id: navigation.getParam("id") })
         }
       >
         <Entypo name="feather" size={25} style={styles.featherStyle} />
@@ -49,60 +58,59 @@ ShowEnsemble.navigationOptions = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: 'white'
-    },
-    titleText: {
-        fontSize: 23,
-        borderWidth: 1,
-        padding: 5 ,
-        borderRadius: 5,
-        shadowColor: "#000",
-        paddingHorizontal: 25,
-        elevation: 0.2,
-        color: "#2f4f4f"
-    },
-    titleView: {
-        paddingVertical: 10,
-        marginTop: 8,
-        marginBottom: 20,
-        marginTop: 15
-      },
-    screenContainer: {
-        backgroundColor: 'white',
-        flex: 1
-    },
-    featherStyle: {
-        marginRight: 8
-    },
-    titleViewStyle: {
-        backgroundColor: 'white',
-        alignItems: "center",
-        padding: 15
-    },
-    titleTextStyle: {
-        fontSize: 20,
-
-    },
-    chairView: {
-        marginHorizontal: 20,
-    },
-    chairStyle: {
-        fontSize: 18,
-        padding: 10,
-        justifyContent: "space-between",
-        borderColor: 'grey'
-    },
-    playerText: {
-        fontSize: 20, 
-        padding: 12, 
-        borderBottomColor: 'grey',
-        borderBottomWidth: 0.5,
-        paddingVertical: 15
-    }
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "white",
+  },
+  titleText: {
+    fontSize: 23,
+    borderWidth: 1,
+    padding: 5,
+    borderRadius: 5,
+    shadowColor: "#000",
+    paddingHorizontal: 25,
+    elevation: 0.2,
+    color: "#2f4f4f",
+  },
+  titleView: {
+    paddingVertical: 10,
+    marginTop: 8,
+    marginBottom: 20,
+    marginTop: 15,
+  },
+  screenContainer: {
+    backgroundColor: "white",
+    flex: 1,
+  },
+  featherStyle: {
+    marginRight: 8,
+  },
+  titleViewStyle: {
+    backgroundColor: "white",
+    alignItems: "center",
+    padding: 15,
+  },
+  titleTextStyle: {
+    fontSize: 20,
+  },
+  chairView: {
+    marginHorizontal: 20,
+  },
+  chairStyle: {
+    fontSize: 18,
+    padding: 10,
+    justifyContent: "space-between",
+    borderColor: "grey",
+  },
+  playerText: {
+    fontSize: 20,
+    padding: 12,
+    borderBottomColor: "grey",
+    borderBottomWidth: 0.5,
+    paddingVertical: 15,
+  },
 });
 
 export default ShowEnsemble;

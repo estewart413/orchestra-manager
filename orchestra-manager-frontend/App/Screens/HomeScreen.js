@@ -1,6 +1,6 @@
 //This screen must contain list of ensables created by the user, 
 //as well as a button that allows to create new ensamble.
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { StyleSheet, Text, View, FlatList, TouchableOpacity } from "react-native";
 import { Context } from "../context/EnsembleContext";
 import { Ionicons, AntDesign } from '@expo/vector-icons';
@@ -8,8 +8,12 @@ import { Ionicons, AntDesign } from '@expo/vector-icons';
 const PRIME_COLOR = "#008082";
 ////////////////////////////////////////////////////////
 const HomeScreen = ({ navigation }) => {
-  const { state, addEnsemble, deleteEnsemble } = useContext(Context);
+  const { state, addEnsemble, deleteEnsemble, getEnsemble } = useContext(Context);
   console.log(state)
+
+  useEffect(() => {
+    getEnsemble();
+  }, [])
 
   return (
     <View style={styles.container}>

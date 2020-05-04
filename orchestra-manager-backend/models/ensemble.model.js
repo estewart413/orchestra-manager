@@ -9,7 +9,6 @@ var ensembleSchema = new Schema({
     accManager:    {type: String},                  //User Type Manager
     accConduct:       {type: String},               //User Type Conductor
     accLibrarian:    {type: String},                //User Type Librarian
-
 })
 
 //Schema.plugin(mongooseUniqueValidator);
