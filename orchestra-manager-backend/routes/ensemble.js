@@ -45,28 +45,48 @@ router.route('/delete/:id').delete((req, res) => {
         .catch(err => res.status(400).json("Error: " + err))
 });
 
-router.route('/edit/:id').put((req, res) => {
-    Ensemble.findAndModify(req.params.id)
-        .then(ensemble => {
-            if (ensemble.enId != req.body.enId)
-            ensemble.enId = req.body.enId;
-            if (ensemble.enName != req.body.enName)
-            ensemble.enName = req.body.enName;
-            if (ensemble.enType != req.body.enType)
-            ensemble.enType = req.body.enType;
-            if (ensemble.chairs != req.body.chairs)
-            ensemble.chairs = req.body.chairs;
-            if (ensemble.accManager != req.body.accManager)
-            ensemble.accManager = req.body.accManager;
-            if (ensemble.accConduct != req.body.accConduct)
-            ensemble.email = req.body.email;
-            if (ensemble.accLibrarian != req.body.accLibrarian)
-            ensemble.accLibrarian = req.body.accLibrarian;
-            if (ensemble.accMember != req.body.accMember)
-            ensemble.accMember = req.body.accMember;
+router.route('/edit/:id').post(async (req, res) => {
+    let newenId = req.body.enId;
+    let newenName = req.body.enName;
+    let newenType = req.body.enType;
+    let newchairs = req.body.chairs;
+    let newaccMember = req.body.accMember;
+    let newaccConductor = req.body.accConductor;
+    let newaccManager = req.body.accManager;
+    let newaccLibrarian = req.body.accLibrarian;
 
-            ensemble.save();
-        });
+    let query = await Ensemble.findOne({"_id": req.params.id});
+    console.log(query);
+    if (query == null || query == undefined){
+        res.status(400).json("Ensemble not found!")
+    } else {
+        if (await query.enId != newenId && newenId != null) {
+            query.enId = newenId;
+        }
+        if (await query.enName != newenName && newenName != null) {
+            query.enName = newenName;
+        }
+        if (await query.enType != newenType && newenType != null) {
+            query.enType = newenType;
+        }
+        if (await query.chairs != newchairs && newchairs != null) {
+            query.chairs = newchairs;
+        }
+        if (await query.accMember != newaccMember && newaccMember != null) {
+            query.accMember = newaccMember;
+        }
+        if (await query.accConductor != newaccConductor && newaccConductor != null) {
+            query.accConductor = newaccConductor;
+        }
+        if (await query.accManager != newaccManager && newaccManager != null) {
+            query.accManager= newaccManager;
+        }
+        if (await query.accLibrarian!= newaccLibrarian && newaccLibrarian != null) {
+            query.accLibrarian= newaccLibrarian;
+        }
+        query.save();
+        res.status(200).json("Edit Saved!");
+    }
 });
 
 router.route('/addMember/:id').post(async (req, res) => {
