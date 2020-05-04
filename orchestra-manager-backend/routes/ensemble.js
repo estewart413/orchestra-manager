@@ -105,7 +105,6 @@ router.route('/addLibrarian/').post(async (req, res) => {
     try {
         let query = await Ensemble.findOne({"enId":enId})
         .catch(err => console.log(err).json("Error:" + err));
-        console.log(query);
         let libList = await query.accLibrarian;
         let addedCheck = "";
         await libList.forEach(element => {
@@ -135,7 +134,6 @@ router.route('/addConductor/').post(async (req, res) => {
     try {
         let query = await Ensemble.findOne({"enId":enId})
         .catch(err => console.log(err).json("Error:" + err));
-        console.log(query);
         let conList = await query.accConductor;
         let addedCheck = "";
         await conList.forEach(element => {
@@ -158,4 +156,24 @@ router.route('/addConductor/').post(async (req, res) => {
         console.log(err).json("Error" + err);
     }
 });
+
+router.route('/addChair/').post(async (req, res) => {
+    let chairKey = req.body.key;
+    let enId = req.body.enId;
+
+    try {
+        let query = await Ensemble.findOne({"enId":enId})
+        .catch(err => console.log(err).json("Error:" + err));
+        let chairList = await query.chairs;
+        let addedCheck = "";
+        chairList.push(chairKey);
+        query.chairs = chairList;
+        query.save();
+        res.status(200).json("Chair Added!")
+    }
+    catch (err) {
+        console.log(err).json("Error" + err);
+    }
+});
+
 module.exports = router;
