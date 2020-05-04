@@ -3,6 +3,6 @@
   "lanType": "ip",
   "dev": true,
   "minify": false,
-  "urlRandomness": "zn-mgr",
-  "https": false
+  "urlRandomness": "xs-zhc",
+  "https": true
 }
