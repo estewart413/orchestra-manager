@@ -1,5 +1,5 @@
 import React from "react";
-import { Platform, StatusBar } from "react-native";
+import { NavigationContainer, TabActions} from '@react-navigation/native';
 import { createStackNavigator } from "react-navigation-stack";
 import { createAppContainer } from "react-navigation";
 
@@ -64,6 +64,7 @@ const work = createStackNavigator({
     },
   },
 });
+
 
 const Navigator = createAppContainer(work);
 
