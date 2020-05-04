@@ -6,7 +6,7 @@ Orchestra Manager is an app designed to make musicians lives easier.  <br />
 
 To run this project, follow the instructions below. <br />
 
-This app uses the following NPM libraries: react-native, mongoose, express, cors, dotenv, axios, nodemon, react-material-library, bcrypt, react-navigation, react-navigation-stack, expo
+This app uses the following NPM libraries: react-native, mongoose, express, cors, dotenv, axios, nodemon, react-native-material-design, bcrypt, react-navigation, react-navigation-stack, expo
 
 To initialize these libraries, use "npm install" followed by the library name.
 =======
