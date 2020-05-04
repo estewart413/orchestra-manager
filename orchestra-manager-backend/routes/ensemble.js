@@ -64,15 +64,16 @@ router.route('/edit/:id').put((req, res) => {
             ensemble.accLibrarian = req.body.accLibrarian;
             if (ensemble.accMember != req.body.accMember)
             ensemble.accMember = req.body.accMember;
+
+            ensemble.save();
         });
 });
 
-router.route('/addMember/').post(async (req, res) => {
+router.route('/addMember/:id').post(async (req, res) => {
     let userName = req.body.userName;
-    let enId = req.body.enId;
 
     try {
-        let query = await Ensemble.findOne({"enId":enId})
+        let query = await Ensemble.findOne({"_id": req.params.id})
         .catch(err => console.log(err).json("Error:" + err));
         console.log(query);
         let memberList = await query.accMember;
@@ -98,12 +99,11 @@ router.route('/addMember/').post(async (req, res) => {
     }
 });
 
-router.route('/addLibrarian/').post(async (req, res) => {
+router.route('/addLibrarian/:id').post(async (req, res) => {
     let userName = req.body.userName;
-    let enId = req.body.enId;
 
     try {
-        let query = await Ensemble.findOne({"enId":enId})
+        let query = await Ensemble.findOne({"_id":req.params.id})
         .catch(err => console.log(err).json("Error:" + err));
         let libList = await query.accLibrarian;
         let addedCheck = "";
@@ -127,12 +127,11 @@ router.route('/addLibrarian/').post(async (req, res) => {
         console.log(err).json("Error" + err);
     }
 });
-router.route('/addConductor/').post(async (req, res) => {
+router.route('/addConductor/:id').post(async (req, res) => {
     let userName = req.body.userName;
-    let enId = req.body.enId;
 
     try {
-        let query = await Ensemble.findOne({"enId":enId})
+        let query = await Ensemble.findOne({"_id":req.params.id})
         .catch(err => console.log(err).json("Error:" + err));
         let conList = await query.accConductor;
         let addedCheck = "";
@@ -157,16 +156,14 @@ router.route('/addConductor/').post(async (req, res) => {
     }
 });
 
-router.route('/addChair/').post(async (req, res) => {
-    let chairKey = req.body.key;
-    let enId = req.body.enId;
+router.route('/addChair/:id').post(async (req, res) => {
+    let chair = req.body.chairs
 
     try {
-        let query = await Ensemble.findOne({"enId":enId})
+        let query = await Ensemble.findOne({"_id":req.params.id})
         .catch(err => console.log(err).json("Error:" + err));
         let chairList = await query.chairs;
-        let addedCheck = "";
-        chairList.push(chairKey);
+        chairList.push(chair);
         query.chairs = chairList;
         query.save();
         res.status(200).json("Chair Added!")
