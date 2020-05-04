@@ -14,8 +14,8 @@ router.route('/:id').get((req, res) => {
 });
 
 router.route('/add').post((req, res) => {
-    const enId = req.body.enId;
-    const enName = req.body.enName;
+    const id = req.body.id;
+    const title = req.body.title;
     const enType = req.body.enType;
     const chairs = req.body.chairs;
     const accManager = req.body.accManager;
@@ -24,8 +24,8 @@ router.route('/add').post((req, res) => {
     const accMember = req.body.accMember;
 
     const newEnsemble = new Ensemble({
-        enId,
-        enName,
+        id,
+        title,
         enType,
         chairs,
         accManager,
@@ -48,10 +48,10 @@ router.route('/delete/:id').delete((req, res) => {
 router.route('/edit/:id').put((req, res) => {
     Ensemble.findAndModify(req.params.id)
         .then(ensemble => {
-            if (ensemble.enId != req.body.enId)
-            ensemble.enId = req.body.enId;
-            if (ensemble.enName != req.body.enName)
-            ensemble.enName = req.body.enName;
+            if (ensemble.id != req.body.id)
+            ensemble.id = req.body.id;
+            if (ensemble.title != req.body.title)
+            ensemble.title = req.body.title;
             if (ensemble.enType != req.body.enType)
             ensemble.enType = req.body.enType;
             if (ensemble.chairs != req.body.chairs)
