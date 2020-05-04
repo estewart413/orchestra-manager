@@ -1,10 +1,10 @@
 {
-  "devToolsPort": 19002,
   "expoServerPort": 19000,
+  "expoServerNgrokUrl": "https://6n-qyj.anonymous.orchestra-manager-frontend.exp.direct",
+  "packagerNgrokUrl": "https://packager.6n-qyj.anonymous.orchestra-manager-frontend.exp.direct",
+  "ngrokPid": 21540,
   "packagerPort": 19001,
-  "packagerPid": 15976,
-  "expoServerNgrokUrl": "https://xs-zhc.anonymous.orchestra-manager-frontend.exp.direct",
-  "packagerNgrokUrl": "https://packager.xs-zhc.anonymous.orchestra-manager-frontend.exp.direct",
-  "ngrokPid": 14788,
-  "webpackServerPort": null
+  "packagerPid": 2008,
+  "webpackServerPort": null,
+  "devToolsPort": 19002
 }
