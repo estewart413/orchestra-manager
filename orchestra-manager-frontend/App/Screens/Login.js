@@ -23,22 +23,22 @@ class Login extends React.Component {
 
   onLoginPressed() {
     const that = this;
+  
     axios
-      .post("http://b0b42833.ngrok.io/users/auth/", {
+      .post("http://369898df.ngrok.io/users/auth/", {
         //email: this.state.email,
         password: this.state.password,
         userName: this.state.userName,
       })
       .then(function(response) {
-        if (response.status != 200) {
-          console.warn(response.status);
-          that.props.alert("Username or Password incorrect. Please try again.");
-         
-        } else {
-          that.props.navigation.navigate('Home');
-      }
-    
-      });
+        if (response.status == 200) {
+         that.props.navigation.navigate('Home');
+        }
+        
+      })  
+      .catch (function(err){
+          alert('Invalid username or password - please try again.');
+      })
   }
 
   render() {

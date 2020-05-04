@@ -8,6 +8,12 @@ const CreateEnsemble = ({ navigation }) => {
   const { addEnsemble } = useContext(Context);
   ////////////////////////////////////////////
 
+
+  function Separator() {
+    return <View style={styles.separator} />;
+  }
+
+
   return (
     <EnsembleForm
       onSubmit={(chairs, title) => {
