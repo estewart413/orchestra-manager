@@ -28,7 +28,7 @@ class Debug extends Component {
           dataSource: responseJson
       })
     })
-    .catch(error => {
+    .catch(error => { 
       this.setState({error})
     })
   }
