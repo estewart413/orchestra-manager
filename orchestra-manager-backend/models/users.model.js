@@ -11,7 +11,7 @@ var userSchema = new Schema({
     lName:       {type: String, required: true},
     password:    {type: String, required: true},                 //Needs to be hashed later
     email:       {type: String, required: true, unique: true},
-    userName:    {type: String, required: true},
+    userName:    {type: String, required: true, unique: true},
 
 })
 
