@@ -23,7 +23,7 @@ class Registration extends React.Component {
   }
   onRegistrationPressed() {
     axios
-      .post("http://ce3203ab.ngrok.io/users/add", {
+      .post("http://115feed8.ngrok.io/users/add", {
         userType: this.state.userType,
         fName: this.state.fName,
         lName: this.state.lName,

@@ -13,6 +13,14 @@ const HomeScreen = ({ navigation }) => {
 
   useEffect(() => {
     getEnsemble();
+
+    const listener = navigation.addListener('didFocus', () => {
+      getEnsemble();
+    })
+
+    return () => {
+      listener.remove();
+    }
   }, [])
 
   return (
@@ -26,12 +34,12 @@ const HomeScreen = ({ navigation }) => {
         keyExtractor={(ensemble) => ensemble.title}
         renderItem={({ item }) => {
           return (
-            <TouchableOpacity onPress={() => navigation.navigate('ShowEnsemble', { id: item.id})}>
+            <TouchableOpacity onPress={() => navigation.navigate('ShowEnsemble', { _id: item._id})}>
               <View style={styles.flatlistViewStyle}>
                 <Text style={styles.flatlistTextStyle}>
                   {item.title}
                 </Text>
-                <TouchableOpacity onPress={() => deleteEnsemble(item.id)}>
+                <TouchableOpacity onPress={() => deleteEnsemble(item._id)}>
                   <Ionicons style={styles.icon} name="md-remove-circle-outline" />
                 </TouchableOpacity>
               </View>

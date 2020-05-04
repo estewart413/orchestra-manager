@@ -9,19 +9,10 @@ const ensembleReducer = (state, action) => {
       //its a total source of trueth data in the API. so we are taking it for state 
       return action.payload;
     case "delete_ensemble":
-      return state.filter((ensemble) => ensemble.id !== action.payload);
-    case "add_ensemble":
-      return [
-        ...state,
-        {
-          id: Math.floor(Math.random() * 999999),
-          title: action.payload.title,
-          chairs: action.payload.chairs,
-        },
-      ];
+      return state.filter((ensemble) => ensemble._id !== action.payload);
     case "edit_ensemble":
       return state.map((ensemble) => {
-        return ensemble.id === action.payload.id ? action.payload : ensemble;
+        return ensemble._id === action.payload._id ? action.payload : ensemble;
       });
     default:
       return state;
@@ -37,9 +28,9 @@ getEnsemble = dispatch => {
   }
 }
 
-const addEnsemble = (dispatch) => {
-  return (chairs, title, callback) => {
-    dispatch({ type: "add_ensemble", payload: { chairs, title } });
+const addEnsemble = dispatch => {
+  return async (chairs, title, callback) => {
+    await baseURL.post('/ensemble/add', { title, chairs })
     if (callback) {
       callback();
     }
@@ -47,14 +38,18 @@ const addEnsemble = (dispatch) => {
 };
 
 const deleteEnsemble = (dispatch) => {
-  return (id) => {
-    dispatch({ type: "delete_ensemble", payload: id });
+  return async (_id) => { 
+    await baseURL.delete(`ensemble/delete/${_id}`)
+    
+    dispatch({ type: "delete_ensemble", payload: _id });
   };
 };
 
 const editEnsemble = (dispatch) => {
-  return (chairs, title, id, callback) => {
-    dispatch({ type: "edit_ensemble", payload: { chairs, title, id } });
+  return async (chairs, title, _id, callback) => {
+    await baseURL.put(`/ensemble/edit/${_id}`, { chairs, title })
+
+    dispatch({ type: "edit_ensemble", payload: { chairs, title, _id }});
     if (callback) {
       callback();
     }

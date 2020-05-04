@@ -13,12 +13,10 @@ import { CheckBox } from "react-native-elements";
 
 const ShowEnsemble = ({ navigation }) => {
   const { state } = useContext(Context);
-  console.log(state);
-  const ensemble = state.find(
-    (ensemble) => ensemble.id === navigation.getParam("id")
-  );
 
-  console.log(navigation.getParam("id"));
+  const ensemble = state.find(
+    (ensemble) => ensemble._id === navigation.getParam("_id")
+  );
 
   return (
     <View style={styles.container}>
@@ -48,7 +46,7 @@ ShowEnsemble.navigationOptions = ({ navigation }) => {
     headerRight: () => (
       <TouchableOpacity
         onPress={() =>
-          navigation.navigate("EditEnsemble", { id: navigation.getParam("id") })
+          navigation.navigate("EditEnsemble", { _id: navigation.getParam("_id") })
         }
       >
         <Entypo name="feather" size={25} style={styles.featherStyle} />
