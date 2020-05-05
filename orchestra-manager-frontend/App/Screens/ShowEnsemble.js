@@ -1,15 +1,16 @@
-import React, { useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   Text,
   View,
   StyleSheet,
   FlatList,
   Item,
+  Linking,
   TouchableOpacity,
 } from "react-native";
 import { Context } from "../context/EnsembleContext";
-import { Entypo } from "@expo/vector-icons";
-import { CheckBox } from "react-native-elements";
+import { Entypo, Ionicons } from "@expo/vector-icons";
+import axios from "axios";
 
 const ShowEnsemble = ({ navigation }) => {
   const { state } = useContext(Context);
@@ -103,11 +104,18 @@ const styles = StyleSheet.create({
     borderColor: "grey",
   },
   playerText: {
-    fontSize: 20,
-    padding: 12,
+    fontSize: 18,
     borderBottomColor: "grey",
     borderBottomWidth: 0.5,
-    paddingVertical: 15,
+    paddingBottom: 25,
+    paddingTop: -25,
+    marginTop: -10,
+  },
+
+  icon: {
+    alignSelf: "flex-end",
+    marginTop: 10,
+    alignItems: "center",
   },
 });
 
