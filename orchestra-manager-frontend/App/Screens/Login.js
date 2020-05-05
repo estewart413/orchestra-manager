@@ -25,7 +25,7 @@ class Login extends React.Component {
     const that = this;
   
     axios
-      .post("http://71f5aa62.ngrok.io/users/auth/", {
+      .post("http://4a20cc3a.ngrok.io/users/auth/", {
         //email: this.state.email,
         password: this.state.password,
         userName: this.state.userName,

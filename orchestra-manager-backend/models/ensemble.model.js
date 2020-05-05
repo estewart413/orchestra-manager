@@ -3,6 +3,11 @@ var Schema = mongoose.Schema;
 //var mongooseUniqueValidator = require('mongoose-unique-validator');
 
 var ensembleSchema = new Schema({
+<<<<<<< HEAD
+    id:            {type: String, unique: true}, //Ensemble Unique Id
+    title:         {type: String, required: true}, //Ensemble Unique Name
+    chairs:        { type: [] }
+=======
     enId:    {type: String, unique: true},        //Ensemble Unique Id
     enName:       {type: String},   //Ensemble Unique Name
     enType:       {type: String},   //Ensemble Type , Ex. Jazz Band, Symphony Orchestra
@@ -11,6 +16,7 @@ var ensembleSchema = new Schema({
     accConduct:       {type: [String]},               //User Type Conductor
     accLibrarian:    {type: [String]},                //User Type Librarian
     accMember:    {type: [String]},                //User Type Librarian
+>>>>>>> master
 })
 
 //Schema.plugin(mongooseUniqueValidator);
