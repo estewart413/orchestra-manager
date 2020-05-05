@@ -45,7 +45,7 @@ router.route("/delete/:id").delete((req, res) => {
         .catch(err => res.status(400).json("Error: " + err))
 });
 
-router.route('/edit/:id').put((req, res) => {
+router.route('/edit/:id').post((req, res) => {
     Ensemble.findAndModify(req.params._id)
         .then(ensemble => {
             if (ensemble._id != req.body._id)
