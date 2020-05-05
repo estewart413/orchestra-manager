@@ -14,7 +14,7 @@ const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.titleView}>
-        <Text style={styles.titleText}>Ensembles stored here !</Text>
+        <Text style={styles.titleText}>Ensembles stored here:</Text>
       </View>
       <FlatList
         data={state}
@@ -61,8 +61,8 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     shadowColor: "#000",
     paddingHorizontal: 25,
-    elevation: 0.2,
-    color: "#2f4f4f"
+   // elevation: 0.2,
+    color: "#008080"
   },
   flatlistViewStyle: {
     flexDirection: 'row',

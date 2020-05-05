@@ -20,7 +20,7 @@ const ShowEnsemble = ({ navigation }) => {
   );
 
   useEffect(() => {
-    axios.get("http://71f5aa62.ngrok.io/instruments").then((res) => {
+    axios.get("http://ad63cb6a.ngrok.io/instruments").then((res) => {
       console.log(res.data[0].name);
       console.log(res.data[1].name);
       console.log(res.data[2].name);
@@ -42,6 +42,7 @@ const ShowEnsemble = ({ navigation }) => {
         style={{ width: "80%" }}
         data={ensemble.chairs}
         renderItem={({ item }) => {
+        
           return (
             <View>
               <TouchableOpacity
@@ -98,8 +99,8 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     shadowColor: "#000",
     paddingHorizontal: 25,
-    elevation: 0.2,
-    color: "#2f4f4f",
+   // elevation: 0.2,
+    color: "#008080",
   },
   titleView: {
     paddingVertical: 10,

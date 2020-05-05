@@ -25,7 +25,7 @@ class Login extends React.Component {
     const that = this;
   
     axios
-      .post("http://71f5aa62.ngrok.io/users/auth/", {
+      .post("http://ad63cb6a.ngrok.io/users/auth/", {
         //email: this.state.email,
         password: this.state.password,
         userName: this.state.userName,
@@ -39,6 +39,8 @@ class Login extends React.Component {
       .catch (function(err){
           alert('Invalid username or password - please try again.');
       })
+
+  
   }
 
   render() {
@@ -115,6 +117,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 30,
     color: "#2f4f4f",
+ 
   },
 
   buttonPosition: {

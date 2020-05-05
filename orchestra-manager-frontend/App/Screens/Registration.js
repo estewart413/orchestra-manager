@@ -21,9 +21,10 @@ class Registration extends React.Component {
   constructor() {
     super();
   }
+
   onRegistrationPressed() {
     axios
-      .post("http://71f5aa62.ngrok.io/users/add", {
+      .post("http://ad63cb6a.ngrok.io/users/add", {
         userType: this.state.userType,
         fName: this.state.fName,
         lName: this.state.lName,
@@ -43,7 +44,6 @@ class Registration extends React.Component {
     else {
       Alert.alert("Registration successful! Please login.");
       this.props.navigation.navigate("Login");
-  
     }
   }
 
