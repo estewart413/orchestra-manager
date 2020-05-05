@@ -20,7 +20,7 @@ const ShowEnsemble = ({ navigation }) => {
   );
 
   useEffect(() => {
-    axios.get("http://ad63cb6a.ngrok.io/instruments").then((res) => {
+    axios.get("http://96c75fc9.ngrok.io/instruments").then((res) => {
       console.log(res.data[0].name);
       console.log(res.data[1].name);
       console.log(res.data[2].name);

@@ -27,12 +27,12 @@ const EnsembleForm = ({ onSubmit, initialValues }) => {
   
   ///////////////////////////////////////////////////////////////////
   useEffect(() => {
-    axios.get("http://4a20cc3a.ngrok.io/instruments").then((res) => {
+    axios.get("http://96c75fc9.ngrok.io/instruments").then((res) => {
       setInstruments(res.data);
       //console.log(instruments)
     });
     ///////////////////////////////////////////////////////////
-    axios.get("http://4a20cc3a.ngrok.io/users").then((res) => {
+    axios.get("http://96c75fc9.ngrok.io/users").then((res) => {
       setUsers(res.data);
       //console.log(users)
     });
@@ -142,8 +142,7 @@ const EnsembleForm = ({ onSubmit, initialValues }) => {
       ></FlatList>
       <TouchableOpacity
         style={styles.secondButtonPosition}
-        onPress={() => onSubmit(chairs, title)}
-      >
+        onPress={() => onSubmit(chairs, title)}>
         <Text style={styles.buttonText}>Save Ensemble</Text>
       </TouchableOpacity>
     </View>

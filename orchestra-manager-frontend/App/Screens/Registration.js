@@ -24,7 +24,7 @@ class Registration extends React.Component {
 
   onRegistrationPressed() {
     axios
-      .post("http://ad63cb6a.ngrok.io/users/add", {
+      .post("http://96c75fc9.ngrok.io/users/add", {
         userType: this.state.userType,
         fName: this.state.fName,
         lName: this.state.lName,
@@ -121,8 +121,7 @@ class Registration extends React.Component {
           <View>
             <TouchableOpacity
               style={styles.buttonPosition}
-              onPress={this.onRegistrationPressed.bind(this)}
-            >
+              onPress={this.onRegistrationPressed.bind(this)}>
               <Text style={styles.buttonText}>Create Account</Text>
             </TouchableOpacity>
           </View>

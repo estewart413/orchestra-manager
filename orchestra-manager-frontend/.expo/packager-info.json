@@ -1,1 +1,10 @@
-{}
+{
+  "devToolsPort": 19002,
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 1884,
+  "expoServerNgrokUrl": "https://q8-q4h.anonymous.orchestra-manager-frontend.exp.direct",
+  "packagerNgrokUrl": "https://packager.q8-q4h.anonymous.orchestra-manager-frontend.exp.direct",
+  "ngrokPid": 1548,
+  "webpackServerPort": null
+}
