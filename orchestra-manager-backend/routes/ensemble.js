@@ -14,7 +14,7 @@ router.route('/:id').get((req, res) => {
 });
 
 router.route('/add').post((req, res) => {
-    const id = req.body.id;
+    //const id = req.body.id;
     const title = req.body.title;
     //const enType = req.body.enType;
     const chairs = req.body.chairs;
@@ -24,7 +24,6 @@ router.route('/add').post((req, res) => {
     //const accMember = req.body.accMember;
 
     const newEnsemble = new Ensemble({
-        id,
         title,
         //enType,
         chairs,
