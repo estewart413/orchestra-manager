@@ -6,8 +6,11 @@ require('dotenv').config;
 const app = express();
 const port = process.env.PORT || 5000;
 
-//Require User Schema File
+//Require Schema Files
 require('./models/users.model');
+require('./models/ensemble.model');
+require('./models/instruments.model'); 
+
 app.use(cors());
 app.use(express.json());
 
@@ -17,6 +20,14 @@ const connection = mongoose.connection;
 connection.once('open', () => {
     console.log("MongoDB database connection successful");
 });
+
+const userRouter = require('./routes/users');
+const ensembleRouter = require('./routes/ensemble');
+const instrumentRouter = require('./routes/instruments');
+
+app.use('/users', userRouter);
+app.use('/ensemble', ensembleRouter);
+app.use('/instruments', instrumentRouter);
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
