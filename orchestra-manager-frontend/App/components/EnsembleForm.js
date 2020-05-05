@@ -24,15 +24,15 @@ const EnsembleForm = ({ onSubmit, initialValues }) => {
   const [selectedValueUser, setSelectedValueUser] = useState([]);
   //state of both pickers in object
   const [chairs, setChairs] = useState(initialValues.chairs);
-
+  
   ///////////////////////////////////////////////////////////////////
   useEffect(() => {
-    axios.get("http://ad63cb6a.ngrok.io/instruments").then((res) => {
+    axios.get("http://4a20cc3a.ngrok.io/instruments").then((res) => {
       setInstruments(res.data);
       //console.log(instruments)
     });
     ///////////////////////////////////////////////////////////
-    axios.get("http://ad63cb6a.ngrok.io/users").then((res) => {
+    axios.get("http://4a20cc3a.ngrok.io/users").then((res) => {
       setUsers(res.data);
       //console.log(users)
     });
@@ -112,6 +112,7 @@ const EnsembleForm = ({ onSubmit, initialValues }) => {
             {
               selectedValue,
               selectedValueUser,
+              isReturned: false,
               key:
                 Math.random().toString(36).substring(2, 15) +
                 Math.random().toString(36).substring(2, 15),

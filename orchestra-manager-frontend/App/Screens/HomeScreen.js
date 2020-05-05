@@ -1,6 +1,6 @@
-//This screen must contain list of ensembles created by the user, 
-//as well as a button that allows to create new ensemble.
-import React, { useContext } from "react";
+//This screen must contain list of ensables created by the user, 
+//as well as a button that allows to create new ensamble.
+import React, { useContext, useEffect } from "react";
 import { StyleSheet, Text, View, FlatList, TouchableOpacity } from "react-native";
 import { Context } from "../context/EnsembleContext";
 import { Ionicons, AntDesign } from '@expo/vector-icons';
@@ -8,8 +8,20 @@ import { Ionicons, AntDesign } from '@expo/vector-icons';
 const PRIME_COLOR = "#008082";
 ////////////////////////////////////////////////////////
 const HomeScreen = ({ navigation }) => {
-  const { state, addEnsemble, deleteEnsemble } = useContext(Context);
+  const { state, addEnsemble, deleteEnsemble, getEnsemble } = useContext(Context);
   console.log(state)
+
+  useEffect(() => {
+    getEnsemble();
+
+    const listener = navigation.addListener('didFocus', () => {
+      getEnsemble();
+    })
+
+    return () => {
+      listener.remove();
+    }
+  }, [])
 
   return (
     <View style={styles.container}>
@@ -22,12 +34,12 @@ const HomeScreen = ({ navigation }) => {
         keyExtractor={(ensemble) => ensemble.title}
         renderItem={({ item }) => {
           return (
-            <TouchableOpacity onPress={() => navigation.navigate('ShowEnsemble', { id: item.id})}>
+            <TouchableOpacity onPress={() => navigation.navigate('ShowEnsemble', { _id: item._id})}>
               <View style={styles.flatlistViewStyle}>
                 <Text style={styles.flatlistTextStyle}>
                   {item.title}
                 </Text>
-                <TouchableOpacity onPress={() => deleteEnsemble(item.id)}>
+                <TouchableOpacity onPress={() => deleteEnsemble(item._id)}>
                   <Ionicons style={styles.icon} name="md-remove-circle-outline" />
                 </TouchableOpacity>
               </View>

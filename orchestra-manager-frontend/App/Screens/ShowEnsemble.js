@@ -16,7 +16,7 @@ const ShowEnsemble = ({ navigation }) => {
   const { state } = useContext(Context);
 
   const ensemble = state.find(
-    (ensemble) => ensemble.id === navigation.getParam("id")
+    (ensemble) => ensemble._id === navigation.getParam("_id")
   );
 
   useEffect(() => {
@@ -76,7 +76,7 @@ ShowEnsemble.navigationOptions = ({ navigation }) => {
     headerRight: () => (
       <TouchableOpacity
         onPress={() =>
-          navigation.navigate("EditEnsemble", { id: navigation.getParam("id") })
+          navigation.navigate("EditEnsemble", { _id: navigation.getParam("_id") })
         }
       >
         <Entypo name="feather" size={25} style={styles.featherStyle} />

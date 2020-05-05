@@ -1,10 +1,1 @@
-{
-  "expoServerPort": 19000,
-  "expoServerNgrokUrl": "https://3d-dby.anonymous.orchestra-manager-frontend.exp.direct",
-  "packagerNgrokUrl": "https://packager.3d-dby.anonymous.orchestra-manager-frontend.exp.direct",
-  "ngrokPid": 4176,
-  "packagerPort": 19001,
-  "packagerPid": 9184,
-  "webpackServerPort": null,
-  "devToolsPort": 19002
-}
+{}
