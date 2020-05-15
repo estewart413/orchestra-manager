@@ -17,11 +17,12 @@ const ShowEnsemble = ({ navigation }) => {
   const { state } = useContext(Context);
 
   const ensemble = state.find(
-    (ensemble) => ensemble.id === navigation.getParam("id")
+    (ensemble) => ensemble._id === navigation.getParam("_id")
   );
 
   useEffect(() => {
-    axios.get("http://820bfad7.ngrok.io/instruments").then((res) => {
+
+    baseURL.get("/instruments").then((res) => {
       console.log(res.data[0].name);
       console.log(res.data[1].name);
       console.log(res.data[2].name);
@@ -43,6 +44,7 @@ const ShowEnsemble = ({ navigation }) => {
         style={{ width: "80%" }}
         data={ensemble.chairs}
         renderItem={({ item }) => {
+        
           return (
             <View>
               <TouchableOpacity
@@ -76,7 +78,7 @@ ShowEnsemble.navigationOptions = ({ navigation }) => {
     headerRight: () => (
       <TouchableOpacity
         onPress={() =>
-          navigation.navigate("EditEnsemble", { id: navigation.getParam("id") })
+          navigation.navigate("EditEnsemble", { _id: navigation.getParam("_id") })
         }
       >
         <Entypo name="feather" size={25} style={styles.featherStyle} />
@@ -99,8 +101,8 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     shadowColor: "#000",
     paddingHorizontal: 25,
-    elevation: 0.2,
-    color: "#2f4f4f",
+   // elevation: 0.2,
+    color: "#008080",
   },
   titleView: {
     paddingVertical: 10,

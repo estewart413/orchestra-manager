@@ -14,24 +14,23 @@ router.route('/:id').get((req, res) => {
 });
 
 router.route('/add').post((req, res) => {
-    const enId = req.body.enId;
-    const enName = req.body.enName;
-    const enType = req.body.enType;
+    //const id = req.body.id;
+    const title = req.body.title;
+    //const enType = req.body.enType;
     const chairs = req.body.chairs;
-    const accManager = req.body.accManager;
-    const accConduct = req.body.accConduct;
-    const accLibrarian = req.body.accLibrarian;
-    const accMember = req.body.accMember;
+    //const accManager = req.body.accManager;
+    //const accConduct = req.body.accConduct;
+    //const accLibrarian = req.body.accLibrarian;
+    //const accMember = req.body.accMember;
 
     const newEnsemble = new Ensemble({
-        enId,
-        enName,
-        enType,
+        title,
+        //enType,
         chairs,
-        accManager,
-        accConduct ,
-        accLibrarian,
-        accMember
+        //accManager,
+        //accConduct ,
+        //accLibrarian,
+        //accMember
     });
 
     newEnsemble.save()
@@ -39,61 +38,64 @@ router.route('/add').post((req, res) => {
         .catch(err => res.status(400).json('Error: ' + err))
 });
 
-router.route('/delete/:id').delete((req, res) => {
+router.route("/delete/:id").delete((req, res) => {
     Ensemble.findByIdAndDelete(req.params.id)
         .then(() =>res.json('Ensemble Deleted'))
         .catch(err => res.status(400).json("Error: " + err))
 });
 
-router.route('/edit/:id').post(async (req, res) => {
-    let newenId = req.body.enId;
-    let newenName = req.body.enName;
-    let newenType = req.body.enType;
-    let newchairs = req.body.chairs;
-    let newaccMember = req.body.accMember;
-    let newaccConductor = req.body.accConductor;
-    let newaccManager = req.body.accManager;
-    let newaccLibrarian = req.body.accLibrarian;
 
-    let query = await Ensemble.findOne({"_id": req.params.id});
-    console.log(query);
-    if (query == null || query == undefined){
-        res.status(400).json("Ensemble not found!")
-    } else {
-        if (await query.enId != newenId && newenId != null) {
-            query.enId = newenId;
-        }
-        if (await query.enName != newenName && newenName != null) {
-            query.enName = newenName;
-        }
-        if (await query.enType != newenType && newenType != null) {
-            query.enType = newenType;
-        }
-        if (await query.chairs != newchairs && newchairs != null) {
-            query.chairs = newchairs;
-        }
-        if (await query.accMember != newaccMember && newaccMember != null) {
-            query.accMember = newaccMember;
-        }
-        if (await query.accConductor != newaccConductor && newaccConductor != null) {
-            query.accConductor = newaccConductor;
-        }
-        if (await query.accManager != newaccManager && newaccManager != null) {
-            query.accManager= newaccManager;
-        }
-        if (await query.accLibrarian!= newaccLibrarian && newaccLibrarian != null) {
-            query.accLibrarian= newaccLibrarian;
-        }
-        query.save();
-        res.status(200).json("Edit Saved!");
-    }
+router.route('/edit/:id').post((req, res) => {
+    Ensemble.findAndModify(req.params._id)
+        .then(ensemble => {
+            if (ensemble._id != req.body._id)
+            ensemble._id = req.body._id;
+            if (ensemble.title != req.body.title)
+            ensemble.title = req.body.title;
+            //if (ensemble.enType != req.body.enType)
+            //ensemble.enType = req.body.enType;
+            if (ensemble.chairs != req.body.chairs)
+            ensemble.chairs = req.body.chairs;
+            //if (ensemble.accManager != req.body.accManager)
+            //ensemble.accManager = req.body.accManager;
+            //if (ensemble.accConduct != req.body.accConduct)
+            //ensemble.email = req.body.email;
+            //if (ensemble.accLibrarian != req.body.accLibrarian)
+            //ensemble.accLibrarian = req.body.accLibrarian;
+            //if (ensemble.accMember != req.body.accMember)
+            //ensemble.accMember = req.body.accMember;
+        });
+    });
+router.route('/edit/:id').put((req, res) => {
+    Ensemble.findAndModify(req.params.id)
+        .then(ensemble => {
+            if (ensemble.enId != req.body.enId)
+            ensemble.enId = req.body.enId;
+            if (ensemble.enName != req.body.enName)
+            ensemble.enName = req.body.enName;
+            if (ensemble.enType != req.body.enType)
+            ensemble.enType = req.body.enType;
+            if (ensemble.chairs != req.body.chairs)
+            ensemble.chairs = req.body.chairs;
+            if (ensemble.accManager != req.body.accManager)
+            ensemble.accManager = req.body.accManager;
+            if (ensemble.accConduct != req.body.accConduct)
+            ensemble.email = req.body.email;
+            if (ensemble.accLibrarian != req.body.accLibrarian)
+            ensemble.accLibrarian = req.body.accLibrarian;
+            if (ensemble.accMember != req.body.accMember)
+            ensemble.accMember = req.body.accMember;
+
+            ensemble.save();
+        });
 });
 
 router.route('/addMember/:id').post(async (req, res) => {
     let userName = req.body.userName;
+    let id = req.body.id;
 
     try {
-        let query = await Ensemble.findOne({"_id": req.params.id})
+        let query = await Ensemble.findOne({"id":id})
         .catch(err => console.log(err).json("Error:" + err));
         console.log(query);
         let memberList = await query.accMember;
@@ -121,9 +123,10 @@ router.route('/addMember/:id').post(async (req, res) => {
 
 router.route('/addLibrarian/:id').post(async (req, res) => {
     let userName = req.body.userName;
+    let id = req.body.id;
 
     try {
-        let query = await Ensemble.findOne({"_id":req.params.id})
+        let query = await Ensemble.findOne({"id":id})
         .catch(err => console.log(err).json("Error:" + err));
         let libList = await query.accLibrarian;
         let addedCheck = "";
@@ -149,9 +152,10 @@ router.route('/addLibrarian/:id').post(async (req, res) => {
 });
 router.route('/addConductor/:id').post(async (req, res) => {
     let userName = req.body.userName;
+    let id = req.body.id;
 
     try {
-        let query = await Ensemble.findOne({"_id":req.params.id})
+        let query = await Ensemble.findOne({"id":id})
         .catch(err => console.log(err).json("Error:" + err));
         let conList = await query.accConductor;
         let addedCheck = "";

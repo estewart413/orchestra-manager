@@ -22,6 +22,7 @@ class Registration extends React.Component {
   constructor() {
     super();
   }
+
   onRegistrationPressed() {
     baseURL
       .post("/users/add", {
@@ -44,7 +45,6 @@ class Registration extends React.Component {
     else {
       Alert.alert("Registration successful! Please login.");
       this.props.navigation.navigate("Login");
-  
     }
   }
 
@@ -112,8 +112,7 @@ class Registration extends React.Component {
           <View>
             <TouchableOpacity
               style={styles.buttonPosition}
-              onPress={this.onRegistrationPressed.bind(this)}
-            >
+              onPress={this.onRegistrationPressed.bind(this)}>
               <Text style={styles.buttonText}>Create Account</Text>
             </TouchableOpacity>
           </View>

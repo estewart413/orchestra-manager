@@ -25,7 +25,7 @@ const EnsembleForm = ({ onSubmit, initialValues }) => {
   const [selectedValueUser, setSelectedValueUser] = useState([]);
   //state of both pickers in object
   const [chairs, setChairs] = useState(initialValues.chairs);
-
+  
   ///////////////////////////////////////////////////////////////////
   useEffect(() => {
     baseURL.get("/instruments/").then((res) => {
@@ -113,6 +113,7 @@ const EnsembleForm = ({ onSubmit, initialValues }) => {
             {
               selectedValue,
               selectedValueUser,
+              isReturned: false,
               key:
                 Math.random().toString(36).substring(2, 15) +
                 Math.random().toString(36).substring(2, 15),
@@ -142,8 +143,7 @@ const EnsembleForm = ({ onSubmit, initialValues }) => {
       ></FlatList>
       <TouchableOpacity
         style={styles.secondButtonPosition}
-        onPress={() => onSubmit(chairs, title)}
-      >
+        onPress={() => onSubmit(chairs, title)}>
         <Text style={styles.buttonText}>Save Ensemble</Text>
       </TouchableOpacity>
     </View>

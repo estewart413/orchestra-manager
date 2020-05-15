@@ -1,5 +1,3 @@
-# cmps285-spring2020-group1
-
 ## Orchestra Manager
 
 Orchestra Manager is an app designed to make musicians lives easier.  <br />

@@ -40,6 +40,8 @@ class Login extends React.Component {
       .catch (function(err){
           alert('Invalid username or password - please try again.');
       })
+
+  
   }
 
   render() {
@@ -116,6 +118,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 30,
     color: "#2f4f4f",
+ 
   },
 
   buttonPosition: {
