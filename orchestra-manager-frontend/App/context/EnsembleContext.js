@@ -25,9 +25,18 @@ const ensembleReducer = (state, action) => {
   }
 };
 ////////////////////////////////////////////////////
-const addEnsemble = (dispatch) => {
-  return (chairs, title, callback) => {
-    dispatch({ type: "add_ensemble", payload: { chairs, title } });
+
+const getEnsemble = dispatch => {
+  return async () => {
+    const response = await baseURL.get('/ensemble/')
+    //response.data === [{}, {}, {}]
+    dispatch({ type: 'get_ensemble', payload: response.data })
+  }
+}
+
+const addEnsemble = dispatch => {
+  return async (chairs, title, callback) => {
+    await baseURL.post('/ensemble/add', { title, chairs })
     if (callback) {
       callback();
     }

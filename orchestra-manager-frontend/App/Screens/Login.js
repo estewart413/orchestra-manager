@@ -9,6 +9,7 @@ import {
   TextInput,
   KeyboardAvoidingView,
 } from "react-native";
+import baseURL from "../components/baseURL";
 
 const axios = require("axios");
 
@@ -24,8 +25,8 @@ class Login extends React.Component {
   onLoginPressed() {
     const that = this;
   
-    axios
-      .post("http://71f5aa62.ngrok.io/users/auth/", {
+    baseURL
+      .post("/users/auth/", {
         //email: this.state.email,
         password: this.state.password,
         userName: this.state.userName,
