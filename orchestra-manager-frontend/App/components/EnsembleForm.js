@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import axios from 'axios';
 import { Ionicons } from '@expo/vector-icons';
+import baseURL from "../components/baseURL";
 
 const EnsembleForm = ({ onSubmit, initialValues }) => {
 
@@ -27,12 +28,12 @@ const EnsembleForm = ({ onSubmit, initialValues }) => {
   
   ///////////////////////////////////////////////////////////////////
   useEffect(() => {
-    axios.get("http://f112eb72.ngrok.io/instruments").then((res) => {
+    baseURL.get("/instruments/").then((res) => {
       setInstruments(res.data);
       //console.log(instruments)
     });
     ///////////////////////////////////////////////////////////
-    axios.get("http://f112eb72.ngrok.io/users").then((res) => {
+    baseURL.get("/users/").then((res) => {
       setUsers(res.data);
       //console.log(users)
     });

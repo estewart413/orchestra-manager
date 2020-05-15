@@ -11,6 +11,7 @@ import {
 import { Context } from "../context/EnsembleContext";
 import { Entypo, Ionicons } from "@expo/vector-icons";
 import axios from "axios";
+import baseURL from "../components/baseURL";
 
 const ShowEnsemble = ({ navigation }) => {
   const { state } = useContext(Context);
@@ -20,7 +21,8 @@ const ShowEnsemble = ({ navigation }) => {
   );
 
   useEffect(() => {
-    axios.get("http://96c75fc9.ngrok.io/instruments").then((res) => {
+
+    baseURL.get("/instruments").then((res) => {
       console.log(res.data[0].name);
       console.log(res.data[1].name);
       console.log(res.data[2].name);

@@ -8,6 +8,7 @@ import {
   TextInput,
   Alert,
 } from "react-native";
+import baseURL from "../components/baseURL";
 
 const axios = require("axios");
 
@@ -23,8 +24,8 @@ class Registration extends React.Component {
   }
 
   onRegistrationPressed() {
-    axios
-      .post("http://f112eb72.ngrok.io/users/add", {
+    baseURL
+      .post("/users/add", {
         userType: this.state.userType,
         fName: this.state.fName,
         lName: this.state.lName,
@@ -107,16 +108,6 @@ class Registration extends React.Component {
             onChangeText={(val) => this.setState({ password: val })}
           />
           <Separator />
-
-          <TextInput
-          //Will add back in later: to confirm matching passwords
-          // placeholder="Confirm Password"
-          //placeholderTextColor="grey"
-          //secureTextEntry={true}
-          //style={styles.input}
-          //onChangeText = {(val) => this.setState({confirmPassword: val})}
-          //Then Separator component after
-          />
 
           <View>
             <TouchableOpacity

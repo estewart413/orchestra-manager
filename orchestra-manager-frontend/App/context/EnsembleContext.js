@@ -20,7 +20,8 @@ const ensembleReducer = (state, action) => {
 };
 ////////////////////////////////////////////////////
 
-getEnsemble = dispatch => {
+const getEnsemble = dispatch => {
+
   return async () => {
     const response = await baseURL.get('/ensemble/')
     //response.data === [{}, {}, {}]
